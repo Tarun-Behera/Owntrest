@@ -1,0 +1,17 @@
+<% include ./layout/head.ejs %>
+
+<header>
+  <% include ./partials/header.ejs %>
+  <div class="nav-modal w-[100%] h-[100svh] z-[999] absolute top-0 hidden ">
+    <% include ./partials/login-card.ejs %>
+    <% include ./partials/sign-up-card.ejs %>
+  </div>
+</div>
+</header>
+
+<!-- animation photo -->
+<% include ./partials/animation.ejs %>
+<% include ./layout/foot.ejs %>
+
+<script src="../javascripts/header.js" defer></script>
+<script src="/javascripts/auth.js" defer></script>

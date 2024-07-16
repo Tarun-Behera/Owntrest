@@ -1,0 +1,55 @@
+<!-- sign-up component -->
+<div class="auth-btns  w-[500px] m-auto relative top-[30%]">
+    <div class="sign-container flex  w-full justify-center ">
+        <div
+            class="sign-up-container w-full flex flex-col items-center justify-center border-2 bg-[#3c3c3c] rounded-md">
+            <div class="heading mt-[20px]">
+                <h1>Create New Account</h1>
+            </div>
+            <div class="signUp-form w-full flex flex-col items-center">
+                <form action="/sign-up" method="post" id="sf">
+                   
+                    <div id="error_message" class="text-red-400 h-[15px] mt-[10px] text-center"></div>
+                    
+                   <div class="signup_form_container w-[340px] flex flex-col items-center">
+                    <div class="email mt-[10px]">
+                        <label for="email">
+                            <span>email</span>
+                            <input class="block text-[#2b2b2b] w-[120%]" type="email" name="email" id="email" 
+                                autocomplete="on" placeholder="email">
+                        </label>
+                    </div>
+                    <div class="fullname mt-[10px]">
+                        <label for="fullname">
+                            <span>fullname</span>
+                            <input class="block text-[#2b2b2b]" type="text" name="fullname" id="fullname"
+                                autocomplete="on" placeholder="fullname">
+                        </label>
+                    </div>
+                   <div class="username1 mt-[10px]">
+                    <label for="username1">
+                        <span>username</span>
+                        <input class="block text-[#2b2b2b]" type="text" name="username" id="username1" autocomplete="on"
+                            placeholder="username" >
+                    </label>
+                   </div>
+                   <div class="password1 mt-[10px]">
+                    <label for="password1">
+                        <span>password</span>
+                        <input class="block text-[#2b2b2b]" type="password" name="password" id="password1"
+                            placeholder="set password" >
+                    </label>
+                   </div>
+                    <button class="bg-red-500 p-[8px] pr-[20px] pl-[20px] rounded-md hover:bg-[#D22E2E] mt-[20px]"
+                        type="submit">Create Account
+                    </button>
+                   </div>
+                </form>
+                <div>
+                    <div class="fetch-log-in mt-[20px] mb-[20px]"><button>Already have an account? Log In</button></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

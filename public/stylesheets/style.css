@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100svh;
+  width: 100%;
+}
+
+body {
+  background-color: #2b2b2b;
+  background-color: #2b2b2bf0;
+  color: white;
+}
+
+
+/* # css for scroll-bar */
+::-webkit-scrollbar{
+  width:auto;
+  height: auto;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #706f6f;
+  border-radius:3px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #7b7b7b;
+  border-radius:2px;
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background-color: #424242;
+  padding: 10px;
+  /* border: 2px solid skyblue; */
+  padding: 2px;
+}
+.show-post-container::-webkit-scrollbar-track{
+  border-radius: 6px; 
+}
+::-webkit-scrollbar-button {
+  background: #424242;
+  /* border: 2px solid white; */
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  background-image: url('../images/arrows/arrow-up.png'); /* Up arrow */
+  background-position: center;
+}
+.show-post-container::-webkit-scrollbar-button:single-button:vertical:decrement{
+  border-top-right-radius: 6px; 
+}
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  background-image: url('../images/arrows/arrow-down-s-fill.png'); /* Down arrow */
+  background-position: center;
+  transform: rotate(90deg);
+}
+.show-post-container::-webkit-scrollbar-button:single-button:vertical:increment{
+  border-bottom-right-radius: 6px; 
+}
+:-webkit-scrollbar-button:single-button:horizontal:decrement {
+  background-image: url('../images/arrows/arrow-left-s-fill.png'); /* Left arrow */
+}
+
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+  background-image: url('../images/arrows/arrow-right-s-fill.png'); /* Right arrow */
+}
+
+
+/* # css for modals */
+.nav-modal,
+.show-card-modal,
+.post-container-modal {
+  background-color: rgba(26, 25, 25, 0.6);
+}
+
+
+/* # css for landing page */
+.landing-page-animation {
+  height: calc(100svh - 80px);
+  width: 100%;
+}
+
+
+
+/* # CSS for Home page */
+.all-container {
+  height: calc(100svh - 80px);
+  position: relative;
+    top: 100px;
+}
+
+.all-cards {
+  width: 100%;
+  height: 100%;
+}
+
+.cards {
+  columns: 6 200px;
+  column-gap: 1.5rem;
+  padding-bottom: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  display: inline-block;
+  transition: all 0.25s ease-in-out;
+}
+
+.card>a {
+  text-decoration: none;
+}
+
+.card-text {
+  color: white;
+}
+
+.upload-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* # CSS for Profile page */
+.profile-container{
+  height: calc(100svh - 80px);
+  position: relative;
+    top: 80px;
+}

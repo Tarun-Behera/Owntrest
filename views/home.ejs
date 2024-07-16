@@ -1,0 +1,27 @@
+<% include ./layout/head.ejs %>
+    <% include ./partials/nav.ejs %>
+
+        <div class="all-container w-full py-5 px-12">
+            <section class="all-cards">
+                <section class="cards">
+                        <% posts.forEach((post)=>{ %>
+                        <div class="card w-full">
+                            <% if (post.postImage.mimeType.startsWith('image/')) { %>
+                                <img src="/posts/<%= post?.postImage.filename %>" alt="Post is of <%= post.title %>" class="card-img-top rounded-[20px] pb-2 w-full object-cover">
+                              <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
+                                <video controls class="card-img-top rounded-[20px] pb-2 w-full object-cover" src="/posts/<%= post.postImage.filename %>">
+                                </video>
+                              <% } else { %>
+                                <p>Unsupported file type.</p>
+                              <% } %>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <%= post.title %>
+                                </p>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </article>
+            </section>
+        </div>
+        <% include ./layout/foot.ejs %>

@@ -1,0 +1,15 @@
+<nav class="w-full flex justify-between items-center p-5 pr-5 pl-5 fixed z-[1] bg-[#2b2b2b] shadow-lg">
+    <div class="logo"></div>
+    <div class="nav-items flex items-center gap-8">
+       <% if (home == true) { %>
+        <a class="bg-[grey] p-[8px] pr-[20px] pl-[20px] rounded-md" href="/home">Home</a>
+       <%}%>
+       <% if (profile == true) { %>
+        <a class="bg-[grey] p-[8px] pr-[20px] pl-[20px] rounded-md" href="/profile">Profile</a>
+        <%}%>
+        <% if (logout == true) { %>
+            <a class="bg-red-500 hover:bg-[#D22E2E] p-[8px] pr-[20px] pl-[20px] rounded-md" href="/logout">Logout</a>
+       <%}%>
+        
+    </div>
+</nav>

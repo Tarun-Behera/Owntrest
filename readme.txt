@@ -1,0 +1,2 @@
+Owntrest is a platform where one can only post posts related to designs which would be helpfull for the frontend developers to share their work and also for the users who are in search of some ideas and designs for their learning purposes.
+Owntrest is all about what all UI designs related to websites one can posts like card designs,templates design and many more so that it will be easy for one who is in search of good design for their websites and also one can share his/her design to everyone and sho them how skilled they are in their work.

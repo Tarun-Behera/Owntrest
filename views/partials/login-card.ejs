@@ -1,0 +1,37 @@
+<!-- logIn-component -->
+<div class="auth-btns  w-[500px] m-auto relative top-[30%]">
+    <div id="success_message" class="text-green-300 text-center absolute top-[-30%] left-1/2 translate-x-[-50%] text-[20px] w-full"></div>
+    <div class="log-container flex w-full bg-[#3c3c3c] justify-center">
+        <div class="login-container w-full flex flex-col items-center border-2 rounded-md">
+            <div class="heading mt-[20px]">
+                <h1>Welcome To Pintereest</h1>
+            </div>
+            <div id="errorMessage" class="h-[15px] text-red-400 mt-[10px]"></div>
+            <div class="login-form mt-[20px]">
+                <form id="lf">
+                    <div class="login_form_container flex flex-col items-center">
+                        <div class="username">
+                            <label for="username" >
+                                <span>username</span>
+                                <input class="block text-[#2b2b2b]" type="text" name="username" id="username" placeholder="username" autocomplete="on" >
+                            </label>
+                        </div>
+                        <div class="password mt-[20px]">
+                            <label for="password">
+                                <span>password</span>
+                                <input class="block text-[#2b2b2b]" type="password" name="password" id="password" placeholder="password" >
+                            </label>
+                        </div>
+                        <div class="reset mt-[20px]"><a href="">Forgot your password?</a></div>
+                        <button class="lg-btn bg-red-500 p-[8px] pr-[20px] pl-[20px] rounded-md hover:bg-[#D22E2E] mt-[20px]" type="submit">Log In
+                            
+                        </button>
+                    </div>
+                </form>
+                <div>
+                    <div class="fetch-sign-up mt-[20px] mb-[20px]"><button>Not created account? Sign Up</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
