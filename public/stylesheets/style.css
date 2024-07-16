@@ -61,12 +61,11 @@ body {
 ::-webkit-scrollbar-button:single-button:vertical:increment {
   background-image: url('../images/arrows/arrow-down-s-fill.png'); /* Down arrow */
   background-position: center;
-  transform: rotate(90deg);
 }
 .show-post-container::-webkit-scrollbar-button:single-button:vertical:increment{
   border-bottom-right-radius: 6px; 
 }
-:-webkit-scrollbar-button:single-button:horizontal:decrement {
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
   background-image: url('../images/arrows/arrow-left-s-fill.png'); /* Left arrow */
 }
 
