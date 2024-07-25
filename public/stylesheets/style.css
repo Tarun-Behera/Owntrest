@@ -19,28 +19,32 @@ body {
 
 
 /* # css for scroll-bar */
-::-webkit-scrollbar{
-  width:auto;
+body::-webkit-scrollbar {
+  width: 0px;
   height: auto;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+
+::-webkit-scrollbar-thumb {
   background-color: #706f6f;
-  border-radius:3px;
+  border-radius: 3px;
+  border: 2px solid #424242;
+  /* Match the border color to the track background to create padding effect */
 }
-::-webkit-scrollbar-thumb:hover{
-  background-color: #7b7b7b;
-  border-radius:2px;
-  width: 10px;
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a1a1a1;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
   background-color: #424242;
-  padding: 10px;
   /* border: 2px solid skyblue; */
-  padding: 2px;
 }
-.show-post-container::-webkit-scrollbar-track{
-  border-radius: 6px; 
-}
+
 ::-webkit-scrollbar-button {
   background: #424242;
   /* border: 2px solid white; */
@@ -50,34 +54,45 @@ body {
   align-items: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
+
 ::-webkit-scrollbar-button:single-button:vertical:decrement {
-  background-image: url('../images/arrows/arrow-up.png'); /* Up arrow */
+  background-image: url('../images/arrows/arrow-up.png');
+  /* Up arrow */
   background-position: center;
 }
-.show-post-container::-webkit-scrollbar-button:single-button:vertical:decrement{
-  border-top-right-radius: 6px; 
+
+.show-post-container,.post-description::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-top-right-radius: 6px;
 }
+
+.show-post-container,.post-description::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-bottom-right-radius: 6px;
+}
+
 ::-webkit-scrollbar-button:single-button:vertical:increment {
-  background-image: url('../images/arrows/arrow-down-s-fill.png'); /* Down arrow */
+  background-image: url('../images/arrows/arrow-down-s-fill.png');
+  /* Down arrow */
   background-position: center;
 }
-.show-post-container::-webkit-scrollbar-button:single-button:vertical:increment{
-  border-bottom-right-radius: 6px; 
-}
+
 ::-webkit-scrollbar-button:single-button:horizontal:decrement {
-  background-image: url('../images/arrows/arrow-left-s-fill.png'); /* Left arrow */
+  background-image: url('../images/arrows/arrow-left-s-fill.png');
+  /* Left arrow */
 }
 
 ::-webkit-scrollbar-button:single-button:horizontal:increment {
-  background-image: url('../images/arrows/arrow-right-s-fill.png'); /* Right arrow */
+  background-image: url('../images/arrows/arrow-right-s-fill.png');
+  /* Right arrow */
 }
 
 
 /* # css for modals */
 .nav-modal,
 .show-card-modal,
-.post-container-modal {
+.post-container-modal,
+.scale-posts-modal {
   background-color: rgba(26, 25, 25, 0.6);
 }
 
@@ -94,7 +109,7 @@ body {
 .all-container {
   height: calc(100svh - 80px);
   position: relative;
-    top: 100px;
+  top: 100px;
 }
 
 .all-cards {
@@ -129,9 +144,14 @@ body {
   align-items: center;
 }
 
+.post-description {
+  box-shadow: inset 0px 0px 30px 0 rgb(52, 52, 52);
+  border: 3px solid rgba(52, 52, 52, 0.7);
+}
+
 /* # CSS for Profile page */
-.profile-container{
+.profile-container {
   height: calc(100svh - 80px);
   position: relative;
-    top: 80px;
+  top: 80px;
 }
