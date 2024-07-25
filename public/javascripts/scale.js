@@ -26,7 +26,12 @@ var pass_post_arg = (event) => {
   postMediaContainer.innerHTML = "";
   if(postMedia.tagName.toLowerCase() === "img"){
     postMediaContainer.innerHTML = `<img class="post-media-vd rounded-[20px] w-full h-full object-cover" src="${postMedia.src}" alt="${postMedia.alt}" />`;
-    postTitle.textContent = title.textContent;
+    if (title.textContent.trim() === "") {
+      postTitle.textContent = "Title is not provided";
+    } else {
+      postTitle.textContent = title.textContent;
+    }
+    
     postDescription.textContent = description.textContent;
     prfPic.src = prfImg.src;
     prfName.textContent = userName.textContent;
