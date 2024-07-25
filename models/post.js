@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const postSchema = mongoose.Schema({
   title: String,
-  Description: String,
+  description: String,
   postImage: {
     filename: String,
     mimeType: String 

@@ -1,7 +1,12 @@
 <div class="post-container-modal w-[100%] h-[100svh] z-[999] absolute top-[-80px] left-[0]  hidden  flex  items-center justify-center ">
         <div
-        class="post-container h-[80%]  bg-[#3c3c3c] border-2 border-gray-400 rounded-md ">
-        <h1 class="text-[25px] text-center py-2 opacity-80 ">Create a new Post</h1>
+        class="post-container h-[80%]  bg-[#3c3c3c] shadow-lg border-[3px] border-[rgb(90,90,90)] rounded-md ">
+        <div class="post-heading relative">
+            <h1 class="text-[25px] text-center py-2 opacity-80 ">Create a new Post</h1>
+            <div class=" h-full w-fit p-4 absolute top-0 right-0 flex justify-center items-center">
+                <i class="post-container-close ri-close-large-line cursor-pointer "></i>
+            </div>
+        </div>
         <hr class="opacity-10">
         <section class=" w-full h-[80%] flex justify-center items-center overflow-auto px-10">
             <div class="flex justify-center items-center">
@@ -28,7 +33,7 @@
                             <input class=" w-full mt-4 text-black rounded-md py-1 px-1" type="text" name="title"
                                 placeholder="title">
                             <textarea class="block mt-4 text-black rounded-md py-1 px-1 w-full h-[110px]"
-                                name="Description" id="description" placeholder="Description"></textarea>
+                                name="description" id="description" placeholder="Description..."></textarea>
                             <input class=" publish block mt-4 mx-auto bg-red-500 px-8 py-2 rounded-md" type="submit"
                                 value="Publish">
                         </div>

@@ -47,7 +47,7 @@ router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, r
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.create({
     title: req.body.title,
-    Description: req.body.Description,
+    description: req.body.description,
     postImage: {
       filename: req.file.filename,
       mimeType: req.file.mimetype,

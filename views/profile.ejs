@@ -6,10 +6,10 @@
         <input type="file" name="prf-img" id="prf-img">
       </form>
       <div class="profile-card flex items-start justify-center ">
-        <div class="prfImg-container bg-transparent font-semibold text-center rounded-3xl max-w-xs">
-          <div class="relative">
+        <div class="prfImg-container bg-transparent font-semibold text-center rounded-3xl max-w-xs flex flex-col items-center">
+          <div class="relative w-[128px]">
             <span id="prfImg-icon"
-              class="absolute right-0 bottom-0 h-10 w-10 bg-[#3c3c3c] rounded-full flex justify-center items-center cursor-pointer h-9 w-9 border-2 border-gray-400 hover:text-sky-200 hover:border-sky-300 z-[1]">
+              class="absolute right-0 bottom-[12px] h-10 w-10 bg-[#3c3c3c] rounded-full flex justify-center items-center cursor-pointer h-9 w-9 border-2 border-gray-400 hover:text-sky-200 hover:border-sky-300 z-[1]">
               <i class="ri-pencil-fill "></i>
             </span>
             <div class="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto overflow-hidden">
@@ -24,10 +24,13 @@
                   <% } %>
             </div>
           </div>
-          <h1 class="text-lg text-slate-200"> @<%= user.fullname%>
-          </h1>
-          <h3 class="text-gray-300 "> @<%= user.username%>
-          </h3>
+          <div class="user-details">
+            <h1 class="text-lg text-slate-200">
+              <%= user.fullname%>
+            </h1>
+            <h3 class="text-gray-300 "> @<%= user.username%>
+            </h3>
+          </div>
           <div class="createPost flex justify-center items-center">
             <button
               class="bg-red-500 mt-4 h-[50px] w-[50px] rounded-full text-gray-100 font-semibold  hover:bg-[#D22E2E]">
@@ -42,19 +45,20 @@
           <div class="p-card hover:cursor-pointer">
             <div class=" bg-[#3c3c3c] w-52 h-40 rounded-xl overflow-hidden">
               <% if(user?.posts[user.posts.length - 1]?.postImage.mimeType.startsWith('video/')) { %>
-                <video class="p-img w-full h-full object-cover" src="/posts/<%= user?.posts[user.posts.length - 1]?.postImage.filename %>"></video>
-              <% } else if(user?.posts[user.posts.length - 1]?.postImage.mimeType.startsWith('image/')) { %>
-                <img class="p-img w-full h-full object-cover"
-                  src="/posts/<%= user?.posts[user.posts.length - 1]?.postImage.filename %>" alt="Uploads">
-              <% } else { %>
-                  <div class="noUploads flex justify-center items-center h-full w-full select-none">
-                    <div
-                      class="nUpTexts w-fit h-full flex flex-col justify-center text-4xl font-semibold leading-snug ">
-                      <span>No</span>
-                      <span>Uploads!!</span>
+                <video class="p-img w-full h-full object-cover"
+                  src="/posts/<%= user?.posts[user.posts.length - 1]?.postImage.filename %>"></video>
+                <% } else if(user?.posts[user.posts.length - 1]?.postImage.mimeType.startsWith('image/')) { %>
+                  <img class="p-img w-full h-full object-cover"
+                    src="/posts/<%= user?.posts[user.posts.length - 1]?.postImage.filename %>" alt="Uploads">
+                  <% } else { %>
+                    <div class="noUploads flex justify-center items-center h-full w-full select-none">
+                      <div
+                        class="nUpTexts w-fit h-full flex flex-col justify-center text-4xl font-semibold leading-snug ">
+                        <span>No</span>
+                        <span>Uploads!!</span>
+                      </div>
                     </div>
-                  </div>
-                  <% } %>
+                    <% } %>
             </div>
             <h3 class="text-xl text-slate-200 mt-3"> My Uploads </h3>
             <h5 class="text-sm text-gray-300 " id="post-length">

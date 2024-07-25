@@ -1,6 +1,9 @@
 <div class="show-card-modal w-[100%] h-[100svh] z-[999] absolute top-[-80px] left-0 hidden">
     <div
-        class="show-post-container flex flex-wrap items-start gap-[25px] h-[58%] w-[50vw] bg-gray-700 relative z-[1] top-10 left-10 px-6 py-8 rounded-md overflow-auto cursor-default">
+        class="show-post-container flex flex-wrap items-start gap-[25px] h-[58%] w-[50vw] bg-gray-700 relative top-10 left-10 px-6 py-8 rounded-md overflow-auto cursor-default">
+        <div class="h-auto w-fit py-[5px] px-[10px] absolute top-0 right-0 flex justify-center items-center">
+            <i class="show-post-container-close ri-close-large-line cursor-pointer "></i>
+        </div>
         <% user.posts.forEach((post)=>{ %>
             <div class="show-post w-[200px] group hover:cursor-pointer " id="post-<%= post._id %>">
                 <div class=" bg-[#3c3c3c] w-[200px] h-[175px] rounded-xl overflow-hidden relative">
