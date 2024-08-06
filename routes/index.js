@@ -9,7 +9,6 @@ var posts = require("./multer/posts");
 //# Handling the GET request */
 
 /* GET auth page. */
-
 router.get("/", function (req, res) {
   if (req.isAuthenticated()) {
     res.redirect("/home");
@@ -17,10 +16,11 @@ router.get("/", function (req, res) {
     res.render("index");
   }
 });
-/* GET home page. */
+
+/* GET Home page. */
 router.get("/home", isLoggedIn, async function (req, res) {
   const user = await userModel.findOne({ username: req.session.passport.user });
-  const posts = await postModel.find().populate("user");
+  const posts = await postModel.find().populate("user").sort({ _id: -1 });
   res.render("home", { user, posts, home: true, profile: true, logout: true });
 });
 
@@ -33,7 +33,6 @@ router.get("/profile", isLoggedIn, async function (req, res, next) {
 // # Handling the POST request
 
 /* POST for profile-image updation */
-
 router.post("/profile-image", isLoggedIn, prfImg.single("prf-img"), async (req, res, next) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   user.profileImg = req.file.filename;
@@ -42,7 +41,6 @@ router.post("/profile-image", isLoggedIn, prfImg.single("prf-img"), async (req, 
 });
 
 /* POST for post upload */
-
 router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, res, next) => {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const post = await postModel.create({
