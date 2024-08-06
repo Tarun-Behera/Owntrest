@@ -1,33 +1,40 @@
 <div class="show-card-modal w-[100%] h-[100svh] z-[999] absolute top-[-80px] left-0 hidden">
     <div
-        class="show-post-container flex flex-wrap items-start gap-[25px] h-[58%] w-[50vw] bg-gray-700 relative top-10 left-10 px-6 py-8 rounded-md overflow-auto cursor-default">
-        <div class="h-auto w-fit py-[5px] px-[10px] absolute top-0 right-0 flex justify-center items-center">
-            <i class="show-post-container-close ri-close-large-line cursor-pointer "></i>
-        </div>
-        <% user.posts.forEach((post)=>{ %>
-            <div class="show-post w-[200px] group hover:cursor-pointer " id="post-<%= post._id %>">
-                <div class=" bg-[#3c3c3c] w-[200px] h-[175px] rounded-xl overflow-hidden relative">
-                    <div id="delete"
-                        class="bg-red-100 absolute top-0 right-0 m-2 scale-[1.2] rounded-[8px] z-[1] hidden group-hover:block "
-                        onclick="delete_post('<%= post._id %>')">
-                        <i class="ri-delete-bin-7-fill text-black p-[2px] hover:text-red-500"></i>
-                    </div>
-                    <% if (post.postImage.mimeType.startsWith('image/')) { %>
-                        <img src="/posts/<%= post?.postImage.filename %>" alt="Post is of <%= post.title %>"
-                            class="w-full h-full object-cover">
-                        <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
-                            <video controls class="w-full h-full object-cover"
-                                src="/posts/<%= post.postImage.filename %>">
-                            </video>
-                            <% } else { %>
-                                <p>Unsupported file type.</p>
-                                <% } %>
-                </div>
-                <h3 class="text-base text-slate-200 my-1 ">
-                    <%= post.title %>
-                </h3>
+        class="show-post-contents h-[58%] w-[45vw] relative top-10 left-10 rounded-[6px] cursor-default bg-gray-700 overflow-hidden">
+        <div class="show-post-container-heading h-[35px] w-full shadow-lg flex items-center justify-between ">
+            <div class="heading-text p-4">
+                My Uploads
             </div>
-            <% }) %>
+            <div class="h-full w-fit py-[5px] px-[8px]">
+                <i class="show-post-container-close ri-close-large-line cursor-pointer"></i>
+            </div>
+        </div>
+        <div
+            class="show-post-container flex flex-wrap items-start gap-[25px] h-[calc(100%-35px)] w-full px-6 py-[1.5rem] overflow-auto">
+            <% user.posts.forEach((post)=>{ %>
+                <div class="show-post w-[200px] group hover:cursor-pointer" id="post-<%= post._id %>">
+                    <div class="bg-[#3c3c3c] w-[200px] h-[175px] rounded-xl overflow-hidden relative">
+                        <div id="delete"
+                            class="bg-red-100 absolute top-0 right-0 m-2 scale-[1.2] rounded-[8px] z-[1] hidden group-hover:block"
+                            onclick="delete_post('<%= post._id %>')">
+                            <i class="ri-delete-bin-7-fill text-black p-[2px] hover:text-red-500"></i>
+                        </div>
+                        <% if (post.postImage.mimeType.startsWith('image/')) { %>
+                            <img src="/posts/<%= post?.postImage.filename %>" alt="Post is of <%= post.title %>"
+                                class="w-full h-full object-cover" />
+                            <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
+                                <video controls class="w-full h-full object-cover"
+                                    src="/posts/<%= post.postImage.filename %>"></video>
+                                <% } else { %>
+                                    <p>Unsupported file type.</p>
+                                    <% } %>
+                    </div>
+                    <h3 class="text-base text-slate-200 my-1">
+                        <%= post.title %>
+                    </h3>
+                </div>
+                <% }) %>
+        </div>
     </div>
 </div>
 <script src="./javascripts/postDelete.js" defer></script>
