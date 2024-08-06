@@ -24,27 +24,41 @@ var pass_post_arg = (event) => {
   var prfPic = document.querySelector(".prf-pic");
   var prfName = document.querySelector(".prf-name");
   postMediaContainer.innerHTML = "";
-  if(postMedia.tagName.toLowerCase() === "img"){
+  if (postMedia.tagName.toLowerCase() === "img") {
     postMediaContainer.innerHTML = `<img class="post-media-vd rounded-[20px] w-full h-full object-cover" src="${postMedia.src}" alt="${postMedia.alt}" />`;
+    // title
     if (title.textContent.trim() === "") {
       postTitle.textContent = "Title not provided";
     } else {
       postTitle.textContent = title.textContent;
     }
-    
-    postDescription.textContent = description.textContent;
+    // description
+    if ( description.textContent.trim() === "") {
+      postDescription.textContent = "Description not provided";
+    } else {
+      postDescription.textContent = description.textContent;
+    }
+    // pofile pic
     prfPic.src = prfImg.src;
+    // profile fullName
     prfName.textContent = userName.textContent;
-  }
-  else if(postMedia.tagName.toLowerCase() === "video"){
+  } else if (postMedia.tagName.toLowerCase() === "video") {
     postMediaContainer.innerHTML = `<video controls class="post-media-vd rounded-[20px] w-full h-full object-cover" src="${postMedia.src} "></video>`;
-    postTitle.textContent = title.textContent;
-    postDescription.textContent = description.textContent;
+    if (title.textContent.trim() === "") {
+      postTitle.textContent = "Title not provided";
+    } else {
+      postTitle.textContent = title.textContent;
+    }
+    // description
+    if ( description.textContent.trim() === "") {
+      postDescription.textContent = "Description not provided";
+    } else {
+      postDescription.textContent = description.textContent;
+    }
     prfPic.src = prfImg.src;
     prfName.textContent = userName.textContent;
-  }
-  else{
-    postMediaContainer.innerHTML = `<p>Invalid media</p>`
+  } else {
+    postMediaContainer.innerHTML = `<p>Invalid media</p>`;
   }
 };
 
@@ -53,10 +67,9 @@ var scale = () => {
   document.querySelectorAll(".card").forEach((card) =>
     card.addEventListener("click", (e) => {
       document.querySelector(".scale-posts-modal").classList.remove("hidden");
-      document.querySelector("body").classList.add("overflow-hidden"); 
+      document.querySelector("body").classList.add("overflow-hidden");
       pass_post_arg(e);
     })
   );
 };
 scale();
-

@@ -5,30 +5,38 @@
             <section class="all-cards">
                 <section class="cards">
                     <% posts.forEach((post)=>{ %>
-                        <div>
-                            <div class="card w-full cursor-pointer">
-                                <% if (post.postImage.mimeType.startsWith('image/')) { %>
-                                    <img src="/posts/<%= post?.postImage.filename %>" alt="Post is of <%= post.title %>"
-                                        class="card-media rounded-[20px] pb-2 w-full object-cover" />
-                                    <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
-                                        <video class="card-media rounded-[20px] pb-2 w-full object-cover"
-                                            src="/posts/<%= post.postImage.filename %>"></video>
-                                        <% } else { %>
-                                            <p>Unsupported file type.</p>
-                                            <% } %>
-                                                <div class="card-body">
-                                                    <p class="card-title">
-                                                        <%= post.title %>
-                                                    </p>
-                                                    <div class="card-other-details hidden">
-                                                        <p class="card-description hidden">
-                                                            <%= post.description %>
-                                                        </p>
-                                                        <img class="user-prfImg hidden"
-                                                            src="/prf-img/<%= post.user.profileImg%>" alt="Post is of <%= post.title%>">
-                                                        <p class="user-prfName"><%= post.user.fullname%></p>
-                                                    </div>
-                                                </div>
+                        <div class="hover:scale-[1.05] transition-all duration-[.4s]">
+                            <div class="card w-full cursor-pointer relative">
+                                <div class="card-media-container">
+                                    <% if (post.postImage.mimeType.startsWith('image/')) { %>
+                                        <img src="/posts/<%= post?.postImage.filename %>"
+                                            alt="Post is of <%= post.title %>"
+                                            class="card-media rounded-[20px] pb-2 w-full h-full object-cover " />
+                                        <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
+                                            <video class="card-media rounded-[20px] pb-2 w-full object-cover"
+                                                src="/posts/<%= post.postImage.filename %>"></video>
+                                            <div
+                                                class="duration absolute top-[10px] left-[15px] bg-[#3c3c3c] rounded-xl px-[10px]">
+                                            </div>
+                                            <% } else { %>
+                                                <p>Unsupported file type.</p>
+                                                <% } %>
+                                </div>
+                                <div class="card-body flex justify-between items-center px-4">
+                                    <p class="card-title">
+                                        <%= post.title %>
+                                    </p>
+                                    <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
+                                        src="/prf-img/<%= post.user.profileImg%>" alt="Post is of <%= post.title%>" />
+                                    <div class="card-other-details hidden">
+                                        <p class="card-description hidden">
+                                            <%= post.description %>
+                                        </p>
+                                        <p class="user-prfName">
+                                            <%= post.user.fullname%>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -37,6 +45,9 @@
             </section>
         </div>
 
+        <% include ./partials/scroll-bounce.ejs %>
         <% include ./partials/scale-posts.ejs %>
+        <script src="/javascripts/scroll-bounce.js" defer></script>
             <% include ./layout/foot.ejs %>
                 <script src="/javascripts/scale.js" defer></script>
+                <script src="/javascripts/home.js" defer></script>

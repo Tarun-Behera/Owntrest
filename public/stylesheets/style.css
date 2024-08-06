@@ -63,11 +63,17 @@ body::-webkit-scrollbar {
   background-position: center;
 }
 
-.show-post-container,.post-description::-webkit-scrollbar-button:single-button:vertical:decrement {
+.show-post-contents::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-top-right-radius: 6px;
+}
+.post-description::-webkit-scrollbar-button:single-button:vertical:decrement {
   border-top-right-radius: 6px;
 }
 
-.show-post-container,.post-description::-webkit-scrollbar-button:single-button:vertical:increment {
+.show-post-contents::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-bottom-right-radius: 6px;
+}
+.post-description::-webkit-scrollbar-button:single-button:vertical:increment {
   border-bottom-right-radius: 6px;
 }
 
@@ -107,7 +113,6 @@ body::-webkit-scrollbar {
 
 /* # CSS for Home page */
 .all-container {
-  height: calc(100svh - 80px);
   position: relative;
   top: 100px;
 }
@@ -120,13 +125,12 @@ body::-webkit-scrollbar {
 .cards {
   columns: 6 200px;
   column-gap: 1.5rem;
-  padding-bottom: 20px;
 }
 
 .card {
   margin-bottom: 20px;
   display: inline-block;
-  transition: all 0.25s ease-in-out;
+  /* transition: all 0.25s ease-in-out; */
 }
 
 .card>a {
@@ -154,4 +158,31 @@ body::-webkit-scrollbar {
   height: calc(100svh - 80px);
   position: relative;
   top: 80px;
+}
+
+/* # scroll down animation */
+.bounce {
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
+      opacity: 0;
+  }
 }
