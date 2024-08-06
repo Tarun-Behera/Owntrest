@@ -3,12 +3,12 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var mongoose = require("mongoose");
 const passport = require("passport");
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")
+const connectDB = require("./utils/db");
 
-//*requiring the files
+//*requiring the files containing routes
 var indexRouter = require("./routes/index");
 var usersRouter = require("./models/user");
 var loginRouter = require("./routes/auth/login");
@@ -16,15 +16,7 @@ var signupRouter = require("./routes/auth/sign-up");
 var logoutRouter = require("./routes/auth/logout");
 
 //*database connect
-mongoose
-  .connect("mongodb://127.0.0.1:27017/Owntrest")
-  .then(() => {
-    console.log("connection successful");
-  })
-  .catch((err) => {
-    console.log(err);
-    // console.log(err);
-  });
+connectDB();
 
 var app = express();
 

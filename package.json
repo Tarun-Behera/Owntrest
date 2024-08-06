@@ -1,5 +1,5 @@
 {
-  "name": "test-9-Owntrest",
+  "name": "OWNTREST",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "connect-mongo": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
     "ejs": "^2.5.8",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
