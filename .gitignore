@@ -1,6 +1,12 @@
 /node_modules
+
 .env
+
 ---> uploads post folder <---
 /uploads
+
 --->website listen<---
-bin/
+/bin
+
+--->database connection>---
+/utils
