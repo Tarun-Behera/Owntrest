@@ -26,8 +26,16 @@
                                     <p class="card-title">
                                         <%= post.title %>
                                     </p>
-                                    <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
+                                    <% if(user && user.profileImg) { %>
+                                        <!-- profile img that is shown on changing -->
+                                        <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
                                         src="/prf-img/<%= post.user.profileImg%>" alt="Post is of <%= post.title%>" />
+                                        <% } else { %>
+                                          <!-- profile image that is shown by default -->
+                                          <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden" src="/images/user.webp"
+                                            alt="@username">
+                                          <% } %>
+                                    
                                     <div class="card-other-details hidden">
                                         <p class="card-description hidden">
                                             <%= post.description %>
