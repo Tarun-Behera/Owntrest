@@ -7,6 +7,9 @@ const passport = require("passport");
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo")
 const connectDB = require("./utils/db");
+require('dotenv').config();
+
+
 
 //*requiring the files containing routes
 var indexRouter = require("./routes/index");
