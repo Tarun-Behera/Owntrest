@@ -1,5 +1,5 @@
-<% include ./layout/head.ejs %>
-    <% include ./partials/nav.ejs %>
+<%- include ('./layout/head.ejs'); -%>
+    <%- include ('./partials/nav.ejs'); -%>
 
         <div class="all-container w-full py-5 px-12">
             <section class="all-cards">
@@ -53,9 +53,9 @@
             </section>
         </div>
 
-        <% include ./partials/scroll-bounce.ejs %>
-        <% include ./partials/scale-posts.ejs %>
+        <%- include ('./partials/scroll-bounce.ejs'); -%>
+        <%- include ('./partials/scale-posts.ejs'); -%>
         <script src="/javascripts/scroll-bounce.js" defer></script>
-            <% include ./layout/foot.ejs %>
+            <%- include ('./layout/foot.ejs'); -%>
                 <script src="/javascripts/scale.js" defer></script>
                 <script src="/javascripts/home.js" defer></script>

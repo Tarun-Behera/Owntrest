@@ -1,5 +1,5 @@
-<%include ./layout/head.ejs%>
-  <%include ./partials/nav.ejs%>
+<%- include('./layout/head.ejs'); -%>
+  <%-  include('./partials/nav.ejs'); -%>
 
     <div class="profile-container h-[calc(100svh - 80px)] w-full p-10">
       <form enctype="multipart/form-data" id="prfImg-form" class="hidden">
@@ -46,7 +46,7 @@
             </span>
           </div>
         </div>
-        <% include ./partials/add-posts.ejs %>
+        <%- include('./partials/add-posts.ejs'); -%>
       </div>
       <div class="flex flex-wrap gap-10 w-full p-8">
         <div class="post-cards flex flex-wrap gap-10 mt-10 p-2 ">
@@ -72,14 +72,14 @@
             <h5 class="text-sm text-gray-300 " id="post-length">
               <%= user.posts.length %> pins
             </h5>
-            <%include ./partials/show-cards.ejs%>
+            <%- include('./partials/show-cards.ejs'); -%>
           </div>
         </div>
       </div>
       
       <div class="post-result-msg flex justify-center w-full h-auto">
       </div>
-      <%include ./layout/foot.ejs%>
+      <%- include('./layout/foot.ejs'); -%>
 
         <script src="../javascripts/profile.js" defer></script>
         <script src="../javascripts/postUpload.js" defer></script>
