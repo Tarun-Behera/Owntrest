@@ -2,5 +2,5 @@
 
 .env
 
-# ---> uploads post folder <---
-# /uploads
+---> uploads post folder <---
+/uploads
