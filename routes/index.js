@@ -12,9 +12,9 @@ var posts = require("./multer/posts");
 router.get("/", function (req, res) {
   try {
     if (req.isAuthenticated()) {
-      res.redirect("/home");
+      return res.redirect("/home");
     } else {
-      res.render("index");
+      return res.render("index");
     }
   } catch (error) {
     console.error("Error:", error);
