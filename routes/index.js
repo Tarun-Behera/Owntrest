@@ -18,7 +18,7 @@ router.get("/", function (req, res) {
     }
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
@@ -27,21 +27,21 @@ router.get("/home", isLoggedIn, async function (req, res) {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user });
     const posts = await postModel.find().populate("user").sort({ _id: -1 });
-    res.render("home", { user, posts, home: true, profile: true, logout: true });
+    return res.render("home", { user, posts, home: true, profile: true, logout: true });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
 /* GET profile page */
-router.get("/profile", isLoggedIn, async function (req, res, next) {
+router.get("/profile", isLoggedIn, async function (req, res) {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
-    res.render("profile", { user, home: false, profile: false, logout: true });
+    return res.render("profile", { user, home: false, profile: false, logout: true });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
@@ -53,10 +53,10 @@ router.post("/profile-image", isLoggedIn, prfImg.single("prf-img"), async (req, 
     const user = await userModel.findOne({ username: req.session.passport.user });
     user.profileImg = req.file.filename;
     await user.save();
-    res.status(200).json({ profileImage: req.file.filename });
+    return res.status(200).json({ profileImage: req.file.filename });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
@@ -81,10 +81,10 @@ router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, r
     });
     user.posts.push(post._id);
     await user.save();
-    res.status(200).json({ posts: post, user: user });
+    return res.status(200).json({ posts: post, user: user });
   } catch (error) {
     console.error("Error creating post:", error);
-    res.status(500).json({ error: error.message || "Internal Server Error"  });
+    return res.status(500).json({ error: error.message || "Internal Server Error"  });
   }
 });
 
@@ -94,9 +94,9 @@ router.delete("/posts/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await postModel.findByIdAndDelete(id);
-    res.status(200).json({ message: "Post deleted successfully" });
+    return res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting post" });
+    return res.status(500).json({ message: "Error deleting post" });
   }
 });
 
