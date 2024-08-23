@@ -4,3 +4,6 @@
 
 ---> uploads post folder <---
 /uploads
+
+# Ignore Firebase service account file
+config/serviceAccountKey.json
