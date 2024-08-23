@@ -33,7 +33,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: "dark mode",
-    store: new MongoStore({ mongoUrl:'mongodb://127.0.0.1:27017/Owntrest' }),
+    store: new MongoStore({ mongoUrl:process.env.MONGO_URL }),
     cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }, //! 7 days
   })
 );
