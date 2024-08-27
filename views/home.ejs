@@ -9,12 +9,12 @@
                             <div class="card w-full cursor-pointer relative">
                                 <div class="card-media-container">
                                     <% if (post.postImage.mimeType.startsWith('image/')) { %>
-                                        <img src="/posts/<%= post?.postImage.filename %>"
+                                        <img src="<%= post?.postImage.url %>"
                                             alt="Post is of <%= post.title %>"
                                             class="card-media rounded-[20px] pb-2 w-full h-full object-cover " />
                                         <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
                                             <video class="card-media rounded-[20px] pb-2 w-full object-cover"
-                                                src="/posts/<%= post.postImage.filename %>"></video>
+                                                src="<%= post.postImage.url %>"></video>
                                             <div
                                                 class="duration absolute top-[10px] left-[15px] bg-[#3c3c3c] rounded-xl px-[10px]">
                                             </div>

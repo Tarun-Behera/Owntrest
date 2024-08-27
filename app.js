@@ -13,6 +13,8 @@ require('dotenv').config();
 
 //*requiring the files containing routes
 var indexRouter = require("./routes/index");
+var postRouter = require("./routes/multer/posts");
+var prfImgRouter = require("./routes/multer/prf-img");
 var usersRouter = require("./models/user");
 var loginRouter = require("./routes/auth/login");
 var signupRouter = require("./routes/auth/sign-up");
@@ -53,6 +55,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "uploads")));
 
 app.use("/", indexRouter);
+app.use("/", postRouter);
+app.use("/", prfImgRouter);
 app.use("/", loginRouter);
 app.use("/", signupRouter);
 app.use("/", logoutRouter);

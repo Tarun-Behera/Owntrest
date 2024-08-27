@@ -19,7 +19,7 @@ document.querySelector("#prfImg-form input").addEventListener("change", () => {
     })
     .then((data) => {
       let img = data.profileImage;
-      document.querySelector(".prfImg").src = "/prf-img/" + img;
+      document.querySelector(".prfImg").src = img;
       window.location.reload();
     })
     .catch((error) => {

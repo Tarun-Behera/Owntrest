@@ -1,14 +1,75 @@
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 const path = require("path");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./uploads/posts");
-  },
-  filename: (req, file, cb) => {
-    const unique = uuidv4();
-    cb(null, unique + path.extname(file.originalname));
-  },
+const express = require("express");
+var router = express.Router();
+var isLoggedIn = require("../../middlewares/auth");
+var userModel = require("../../models/user");
+var postModel = require("../../models/post");
+
+const admin = require("firebase-admin");  // <-- New line
+const serviceAccount = require("../../config/serviceAccount.json");  // <-- New line
+
+// Initialize Firebase
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,  // <-- New line
 });
+
+const bucket = admin.storage().bucket();  // <-- New line
+
+const storage = multer.memoryStorage();  // <-- Changed line
+
 const posts = multer({ storage: storage });
+
+/* POST for post upload */
+router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, res, next) => {
+  try {
+    // Validate required fields
+    if (!req.file) {
+      console.error("please select a file");
+      return res.status(400).json({ error: "Please select a file to upload" });
+    }
+
+    // Upload file to Firebase Storage
+    const blob = bucket.file(`${uuidv4()}${path.extname(req.file.originalname)}`);  // <-- New line
+    const blobStream = blob.createWriteStream({  // <-- New line
+      metadata: {  // <-- New line
+        contentType: req.file.mimetype,  // <-- New line
+      },  // <-- New line
+    });  // <-- New line
+
+    blobStream.on('error', (err) => {  // <-- New line
+      console.error("Error uploading file:", err);  // <-- New line
+      return res.status(500).json({ error: err.message || "Internal Server Error" });  // <-- New line
+    });  // <-- New line
+
+    blobStream.on('finish', async () => {  // <-- New line
+      const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(blob.name)}?alt=media`;  // <-- New line
+
+      const user = await userModel.findOne({ username: req.session.passport.user });
+      const post = await postModel.create({
+        title: req.body.title,
+        description: req.body.description,
+        postImage: {
+          filename: blob.name,  // <-- Changed line
+          mimeType: req.file.mimetype,
+          url: publicUrl,  // <-- New line
+        },
+        user: user._id,
+      });
+      user.posts.push(post._id);
+      await user.save();
+      return res.status(200).json({ posts: post, user: user });
+    });  // <-- New line
+
+    blobStream.end(req.file.buffer);  // <-- New line
+
+  } catch (error) {
+    console.error("Error creating post:", error);
+    return res.status(500).json({ error: error.message || "Internal Server Error"  });
+  }
+});
+
 module.exports = posts;
+module.exports = router;

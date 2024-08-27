@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         let post = data.posts;
         if (post.postImage && post.postImage.mimeType.startsWith("image/")) {
-          mediaHtml = `<img src="/posts/${post.postImage.filename}" alt="Post is of ${post.title}" class="w-full h-full object-cover">`;
+          mediaHtml = `<img src="${post.postImage.url}" alt="Post is of ${post.title}" class="w-full h-full object-cover">`;
         } else if (post.postImage && post.postImage.mimeType.startsWith("video/")) {
-          mediaHtml = `<video controls class="w-full h-full object-cover" src="/posts/${post.postImage.filename}"></video>`;
+          mediaHtml = `<video controls class="w-full h-full object-cover" src="${post.postImage.url}"></video>`;
         } else {
           mediaHtml = `<p>Unsupported file type.</p>`;
         }

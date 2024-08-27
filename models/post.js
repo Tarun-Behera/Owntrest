@@ -4,7 +4,8 @@ const postSchema = mongoose.Schema({
   description: String,
   postImage: {
     filename: String,
-    mimeType: String 
+    mimeType: String,
+    url: String,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
