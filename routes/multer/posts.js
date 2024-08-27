@@ -8,7 +8,6 @@ var userModel = require("../../models/user");
 var postModel = require("../../models/post");
 
 const admin = require("firebase-admin");  // <-- New line
-const serviceAccount = require("../../config/serviceAccount.json");  // <-- New line
 
 // Initialize Firebase
 if (!admin.apps.length) {

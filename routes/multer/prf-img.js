@@ -3,7 +3,6 @@ const { v4: uuidv4 } = require("uuid");
 const path = require("path");
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('../../config/serviceAccount.json');
 
 if (!admin.apps.length) {
   const serviceAccount = {
