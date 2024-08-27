@@ -5,5 +5,5 @@
 ---> uploads post folder <---
 /uploads
 
-# Ignore Firebase service account file
+# Ignore Firebase service account file 
 config/serviceAccount.json
