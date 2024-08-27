@@ -20,7 +20,7 @@ document.querySelector("#prfImg-form input").addEventListener("change", () => {
     .then((data) => {
       let img = data.profileImage;
       document.querySelector(".prfImg").src = img;
-      window.location.reload();
+      window.location.reload(); 
     })
     .catch((error) => {
       console.error("There was a problem with your fetch operation:", error);
