@@ -1,44 +1,15 @@
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-const path = require("path");
+
 const express = require("express");
-var router = express.Router();
-var isLoggedIn = require("../../middlewares/auth");
-var userModel = require("../../models/user");
-var postModel = require("../../models/post");
+const router = express.Router();
+const isLoggedIn = require("../../middlewares/auth");
+const userModel = require("../../models/user");
+const postModel = require("../../models/post");
 
-const admin = require("firebase-admin");  // <-- New line
-
-// Initialize Firebase
-if (!admin.apps.length) {
-  const serviceAccount = {
-    type: process.env.FIREBASE_TYPE,
-    project_id: process.env.FIREBASE_PROJECT_ID,
-    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
-    private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    client_email: process.env.FIREBASE_CLIENT_EMAIL,
-    client_id: process.env.FIREBASE_CLIENT_ID,
-    auth_uri: process.env.FIREBASE_AUTH_URI,
-    token_uri: process.env.FIREBASE_TOKEN_URI,
-    auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
-    client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL
-  };
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  });
-} else {
-  admin.app(); // Use the already initialized app
-}
-
-const bucket = admin.storage().bucket();  // <-- New line
-
-const storage = multer.memoryStorage();  // <-- Changed line
-
-const posts = multer({ storage: storage });
+// Middleware to select storage method based on environment
+const postUploadMiddleware = require("../../middlewares/postUploadMiddleware")
 
 /* POST for post upload */
-router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, res, next) => {
+router.post("/create-post", isLoggedIn, postUploadMiddleware("postImage"), async (req, res) => {
   try {
     // Validate required fields
     if (!req.file) {
@@ -46,45 +17,29 @@ router.post("/create-post", isLoggedIn, posts.single("postImage"), async (req, r
       return res.status(400).json({ error: "Please select a file to upload" });
     }
 
-    // Upload file to Firebase Storage
-    const blob = bucket.file(`${uuidv4()}${path.extname(req.file.originalname)}`);  // <-- New line
-    const blobStream = blob.createWriteStream({  // <-- New line
-      metadata: {  // <-- New line
-        contentType: req.file.mimetype,  // <-- New line
-      },  // <-- New line
-    });  // <-- New line
+    const fileData = process.env.NODE_ENV === "development" 
+    ? { filename: req.file.filename, mimeType: req.file.mimetype, url: `/posts-img/${req.file.filename}` }
+    : { filename: req.file.firebaseUrl, mimeType: req.file.mimetype, url: req.file.firebaseUrl };
 
-    blobStream.on('error', (err) => {  // <-- New line
-      console.error("Error uploading file:", err);  // <-- New line
-      return res.status(500).json({ error: err.message || "Internal Server Error" });  // <-- New line
-    });  // <-- New line
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    if (!user) {
+      throw new Error("User not found");
+    }
 
-    blobStream.on('finish', async () => {  // <-- New line
-      const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(blob.name)}?alt=media`;  // <-- New line
+    const post = await postModel.create({
+      title: req.body.title,
+      description: req.body.description,
+      postImage: fileData,
+      user: user._id,
+    });
 
-      const user = await userModel.findOne({ username: req.session.passport.user });
-      const post = await postModel.create({
-        title: req.body.title,
-        description: req.body.description,
-        postImage: {
-          filename: blob.name,  // <-- Changed line
-          mimeType: req.file.mimetype,
-          url: publicUrl,  // <-- New line
-        },
-        user: user._id,
-      });
-      user.posts.push(post._id);
-      await user.save();
-      return res.status(200).json({ posts: post, user: user });
-    });  // <-- New line
-
-    blobStream.end(req.file.buffer);  // <-- New line
-
+    user.posts.push(post._id);
+    await user.save();
+    res.status(200).json({ posts: post, user: user });
   } catch (error) {
     console.error("Error creating post:", error);
-    return res.status(500).json({ error: error.message || "Internal Server Error"  });
+    res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 });
 
-module.exports = posts;
 module.exports = router;
