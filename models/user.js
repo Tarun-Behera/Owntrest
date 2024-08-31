@@ -18,11 +18,14 @@ const userSchema = mongoose.Schema({
     type:String,
   },
   profileImg:String,
-  contact:Number,
   posts:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'post'
-  }]
+  }],
+  likedPosts:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'post'
+  }],
 })
 userSchema.plugin(plm);
 module.exports = mongoose.model('user', userSchema)

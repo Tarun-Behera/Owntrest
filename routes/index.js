@@ -43,15 +43,10 @@ router.get("/profile", isLoggedIn, async function (req, res, next) {
   }
 });
 
-// # Handling the POST request
-
-
-
-
 
 //# Handling the DELETE request
 /* DELETE Posts */
-router.delete("/posts/:id", async (req, res) => {
+router.delete("/posts/:id", isLoggedIn, async (req, res) => {
   try {
     const { id } = req.params;
     await postModel.findByIdAndDelete(id);

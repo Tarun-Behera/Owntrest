@@ -19,6 +19,7 @@ var usersRouter = require("./models/user");
 var loginRouter = require("./routes/auth/login");
 var signupRouter = require("./routes/auth/sign-up");
 var logoutRouter = require("./routes/auth/logout");
+var toggleLikePostRouter = require("./routes/toggleLikePost");
 
 //*database connect
 connectDB();
@@ -60,6 +61,7 @@ app.use("/", prfImgRouter);
 app.use("/", loginRouter);
 app.use("/", signupRouter);
 app.use("/", logoutRouter);
+app.use("/", toggleLikePostRouter);
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
