@@ -11,7 +11,6 @@ async function toggleLike(likeBtn, event) {
     });
 
     if (response.ok) {
-      console.log(isLiked);
       if (isLiked === "true") {
         //   if liked then dislike it
         likeBtn.setAttribute("data-liked", "false");
@@ -34,7 +33,6 @@ async function toggleLike(likeBtn, event) {
         );
         likeBtn.classList.add("text-red-500", "opacity-100");
       }
-      // location.reload(); // Reload the page to update the like status
     } else {
       console.error("Failed to toggle like");
     }
