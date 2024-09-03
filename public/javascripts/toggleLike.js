@@ -28,17 +28,17 @@ async function toggleLike(likeBtn, event) {
          // Trigger the animation by changing the bottom position
          setTimeout(() => {
           document.querySelector(".unlikedMessage").classList.add("bottom-[50px]");
-        }, 0);
+        }, 10);
 
         // After the first animation ends, start fading out the message
         setTimeout(() => {
           document.querySelector(".unlikedMessage").classList.add("opacity-0");
-        }, 1000);
+        }, 1500);
 
         // Finally, remove the message from the DOM
         setTimeout(() => {
           document.querySelector(".unlikedMessage").remove();
-        }, 2000);
+        }, 1650);
         // console.log("Removed from My Likes folder");
       } else {
         // like it
@@ -56,18 +56,18 @@ async function toggleLike(likeBtn, event) {
         // Trigger the animation by changing the bottom position
         setTimeout(() => {
           document.querySelector(".likedMessage").classList.add("bottom-[50px]");
-        },0);
+        },10);
 
         // After the first animation ends, start fading out the message
         setTimeout(() => {
           document.querySelector(".likedMessage").classList.add("opacity-0");
-        }, 1000);
+        }, 1500);
         // console.log("Added to My Likes folder");
 
         // Finally, remove the message from the DOM
         setTimeout(() => {
           document.querySelector(".likedMessage").remove();
-        }, 2000);
+        }, 1650);
       }
     } else {
       // console.error("Failed to toggle like");
