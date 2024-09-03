@@ -11,6 +11,9 @@ window.onclick = (e) => {
   }
 };
 
+
+
+
 // # function to pass the arguments to another scale div
 var pass_post_arg = (event) => {
   var postMedia = event.currentTarget.querySelector(".card-media");
@@ -23,7 +26,18 @@ var pass_post_arg = (event) => {
   var postDescription = document.querySelector(".post-description");
   var prfPic = document.querySelector(".prf-pic");
   var prfName = document.querySelector(".prf-name");
+
+  // # function finding url from text and converting it to link.
+  function extractAndConvertUrl(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const convertedText = text.replace(urlRegex, function(url) {
+        return `<a href="${url}" target="_blank" class="text-sky-300 underline underline-offset-4" >${url}</a>`;
+    });
+    return convertedText;
+}
+
   postMediaContainer.innerHTML = "";
+  // condition for photo
   if (postMedia.tagName.toLowerCase() === "img") {
     postMediaContainer.innerHTML = `<img class="post-media-vd rounded-[20px] w-full h-full object-cover" src="${postMedia.src}" alt="${postMedia.alt}" />`;
     // title
@@ -36,13 +50,15 @@ var pass_post_arg = (event) => {
     if ( description.textContent.trim() === "") {
       postDescription.textContent = "Description not provided";
     } else {
-      postDescription.textContent = description.textContent;
+      postDescription.innerHTML = extractAndConvertUrl(description.textContent);
     }
     // pofile pic
     prfPic.src = prfImg.src;
     // profile fullName
     prfName.textContent = userName.textContent;
-  } else if (postMedia.tagName.toLowerCase() === "video") {
+  } 
+  // condition for video
+  else if (postMedia.tagName.toLowerCase() === "video") {
     postMediaContainer.innerHTML = `<video controls class="post-media-vd rounded-[20px] w-full h-full object-cover" src="${postMedia.src} "></video>`;
     if (title.textContent.trim() === "") {
       postTitle.textContent = "Title not provided";
@@ -53,7 +69,7 @@ var pass_post_arg = (event) => {
     if ( description.textContent.trim() === "") {
       postDescription.textContent = "Description not provided";
     } else {
-      postDescription.textContent = description.textContent;
+      postDescription.innerHTML = extractAndConvertUrl(description.textContent);
     }
     prfPic.src = prfImg.src;
     prfName.textContent = userName.textContent;
@@ -61,6 +77,8 @@ var pass_post_arg = (event) => {
     postMediaContainer.innerHTML = `<p>Invalid media</p>`;
   }
 };
+
+
 
 // # function for scale up div
 var scale = () => {
