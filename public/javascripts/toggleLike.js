@@ -23,7 +23,7 @@ async function toggleLike(likeBtn, event) {
           "text-[rgba(225,225,225,0.7)]"
         );
         likeBtn.classList.remove("text-red-500", "opacity-100");
-        msgCtr.innerHTML = `<div class="unlikedMessage absolute transition-all ease-out duration-[500ms] bottom-[-50px] left-[50%] translate-x-[-50%]  bg-red-500 rounded-md px-4 py-1 z-[999]">Unliked</div>`;
+        msgCtr.innerHTML = `<div class="unlikedMessage absolute transition-all ease-out duration-[500ms] bottom-[-50px] left-[50%] translate-x-[-50%]  bg-red-500 rounded-md px-4 py-1 z-[999]">Removed from My Likes</div>`;
         msgCtr.classList.remove("hidden");
          // Trigger the animation by changing the bottom position
          setTimeout(() => {
@@ -39,7 +39,7 @@ async function toggleLike(likeBtn, event) {
         setTimeout(() => {
           document.querySelector(".unlikedMessage").remove();
         }, 2000);
-        console.log("Removed from My Likes folder");
+        // console.log("Removed from My Likes folder");
       } else {
         // like it
         likeBtn.setAttribute("data-liked", "true");
@@ -50,7 +50,7 @@ async function toggleLike(likeBtn, event) {
           "hover:text-red-500"
         );
         likeBtn.classList.add("text-red-500", "opacity-100");
-        msgCtr.innerHTML = `<div class="likedMessage absolute bottom-[-50px] left-[50%] translate-x-[-50%] transition-all duration-[500ms] ease-out bg-red-500 rounded-md px-4 py-1 z-[999]">liked</div>`;
+        msgCtr.innerHTML = `<div class="likedMessage absolute bottom-[-50px] left-[50%] translate-x-[-50%] transition-all duration-[500ms] ease-out bg-red-500 rounded-md px-4 py-1 z-[999]">Added to My Likes</div>`;
         msgCtr.classList.remove("hidden");
 
         // Trigger the animation by changing the bottom position
@@ -62,7 +62,7 @@ async function toggleLike(likeBtn, event) {
         setTimeout(() => {
           document.querySelector(".likedMessage").classList.add("opacity-0");
         }, 1000);
-        console.log("Added to My Likes folder");
+        // console.log("Added to My Likes folder");
 
         // Finally, remove the message from the DOM
         setTimeout(() => {
