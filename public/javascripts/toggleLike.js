@@ -70,7 +70,7 @@ async function toggleLike(likeBtn, event) {
         }, 2000);
       }
     } else {
-      console.error("Failed to toggle like");
+      // console.error("Failed to toggle like");
     }
   } catch (error) {
     // console.error("Error:", error);
