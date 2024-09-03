@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollArrow = document.querySelector('.scrollArrow');
     
     function checkScrollable() {
-        if (document.body.scrollHeight > window.innerHeight) {66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
+        if (document.body.scrollHeight > window.innerHeight) {
             scrollArrow.classList.remove('hidden','fade-out');
         } else {
             scrollArrow.classList.add('fade-out');

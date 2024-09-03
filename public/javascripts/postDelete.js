@@ -14,9 +14,9 @@ async function delete_post(postId) {
         document.querySelector('.deleteMessage').remove();
       }, 1500);
     } else {
-      console.error("Failed to delete the post");
+      // console.error("Failed to delete the post");
     }
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
   }
 }

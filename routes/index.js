@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
       return res.render("index");
     }
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
     return res.status(500).json({ error: error.message });
   }
 });
@@ -27,7 +27,7 @@ router.get("/home", isLoggedIn, async function (req, res) {
     const posts = await postModel.find().populate("user").sort({ _id: -1 });
     return res.render("home", { user, posts, home: true, profile: true, logout: true });
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
     return res.status(500).json({ error: error.message });
   }
 });
@@ -38,7 +38,7 @@ router.get("/profile", isLoggedIn, async function (req, res, next) {
     const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
     return res.render("profile", { user, home: false, profile: false, logout: true });
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
     return res.status(500).json({ error: error.message });
   }
 });

@@ -27,7 +27,7 @@ router.post("/toggle-like-post/:postId", isLoggedIn, async (req, res) => {
         return res.status(200).json({ message: "Post unliked", liked: false });
       }
     } catch (error) {
-      console.error("Error toggling like:", error);
+      // console.error("Error toggling like:", error);
       return res.status(500).json({ error: error.message });
     }
   });

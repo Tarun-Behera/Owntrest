@@ -34,7 +34,7 @@ router.post("/profile-image", isLoggedIn, prfImgMiddleware("prf-img"), async (re
 
     return res.status(200).json({ profileImage: imageUrl });
   } catch (error) {
-    console.error("Error:", error);
+    // console.error("Error:", error);
     return res.status(500).json({ error: error.message });
   }
 });

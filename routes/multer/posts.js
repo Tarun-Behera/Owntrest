@@ -13,7 +13,7 @@ router.post("/create-post", isLoggedIn, postUploadMiddleware("postImage"), async
   try {
     // Validate required fields
     if (!req.file) {
-      console.error("please select a file");
+      // console.error("please select a file");
       return res.status(400).json({ error: "Please select a file to upload" });
     }
 
@@ -37,7 +37,7 @@ router.post("/create-post", isLoggedIn, postUploadMiddleware("postImage"), async
     await user.save();
     res.status(200).json({ posts: post, user: user });
   } catch (error) {
-    console.error("Error creating post:", error);
+    // console.error("Error creating post:", error);
     res.status(500).json({ error: error.message || "Internal Server Error" });
   }
 });
