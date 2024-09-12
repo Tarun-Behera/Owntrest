@@ -35,7 +35,7 @@ router.get("/home", isLoggedIn, async function (req, res) {
 /* GET profile page */
 router.get("/profile", isLoggedIn, async function (req, res, next) {
   try {
-    const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts");
+    const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts").populate("likedPosts");
     return res.render("profile", { user, home: false, profile: false, logout: true });
   } catch (error) {
     // console.error("Error:", error);

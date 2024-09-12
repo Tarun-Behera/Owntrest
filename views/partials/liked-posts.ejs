@@ -1,0 +1,25 @@
+<div class="liked-post-cards flex flex-wrap gap-10 mt-10 p-2">
+    <div class="p-card liked-post-container hover:cursor-pointer">
+      <div class="bg-[#3c3c3c] w-52 h-40 rounded-xl overflow-hidden">
+        <% const lastLikedPost = user?.likedPosts[user.likedPosts.length - 1]; %>
+        <% if (lastLikedPost?.postImage?.mimeType?.startsWith('video/')) { %>
+          <video class="p-img w-full h-full object-cover" src="<%= lastLikedPost.postImage.url %>"></video>
+        <% } else if (lastLikedPost?.postImage?.mimeType?.startsWith('image/')) { %>
+          <img class="p-img w-full h-full object-cover" src="<%= lastLikedPost.postImage.url %>" alt="Liked Post">
+        <% } else { %>
+          <div class="noUploads flex justify-center items-center h-full w-full select-none">
+            <div class="nUpTexts w-fit h-full flex flex-col justify-center text-4xl font-semibold leading-snug">
+              <span>No</span>
+              <span>Likes!!</span>
+            </div>
+          </div>
+        <% } %>
+      </div>
+      <h3 class="text-xl text-slate-200 mt-3">My Likes</h3>
+      <h5 class="text-sm text-gray-300" id="post-length">
+        <%= user.likedPosts.length %> pins
+      </h5>
+    </div>
+    <%- include('show-like-cards.ejs'); -%>
+  </div>
+  
