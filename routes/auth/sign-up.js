@@ -12,7 +12,7 @@ async function checkIfUserExists(username, email) {
     // console.error("no user found");
   }
 }
-
+  
 router.post("/sign-up", async (req, res, next) => {
   const { username, fullname, email, password } = req.body;
 
