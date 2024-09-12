@@ -28,9 +28,16 @@ document.querySelector("#prfImg-form input").addEventListener("change", () => {
 });
 ///
 
-document.querySelector(".p-card").addEventListener("click", () => {
-  document.querySelector(".show-card-modal").classList.remove("hidden");
-});
+// # cards of contains
+document.querySelectorAll(".p-card").forEach((p)=>{
+  p.addEventListener("click", (event) => {
+    if(event.currentTarget === document.querySelector(".liked-post-container")){
+      document.querySelector(".show-like-card-modal").classList.remove("hidden");
+    }
+    document.querySelector(".show-card-modal").classList.remove("hidden");
+  });
+})
+///
 
 document.querySelector(".createPost").addEventListener("click", (e) => {
   e.preventDefault();
@@ -41,9 +48,12 @@ window.onclick = (e) => {
     e.target == document.querySelector(".post-container-modal") ||
     e.target == document.querySelector(".post-container-close") ||
     e.target == document.querySelector(".show-card-modal") ||
-    e.target == document.querySelector(".show-post-container-close")
+    e.target == document.querySelector(".show-like-card-modal") ||
+    e.target == document.querySelector(".show-post-container-close")||
+    e.target == document.querySelector(".show-like-post-container-close")
   ) {
     document.querySelector(".show-card-modal").classList.add("hidden");
+    document.querySelector(".show-like-card-modal").classList.add("hidden");
     document.querySelector(".post-container-modal").classList.add("hidden");
   }
 };
