@@ -10,7 +10,6 @@ async function checkIfUserExists(username, email) {
     return { username: user.username, email: user.email };
   } else {
     // console.error("no user found");
-    return res.json({message: "no user found"});
   }
 }
 
@@ -46,7 +45,7 @@ router.post("/sign-up", async (req, res, next) => {
     });
   } catch (error) {
     // console.error(error.message);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: error.message });
   }
 });
 

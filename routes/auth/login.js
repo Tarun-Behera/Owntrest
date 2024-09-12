@@ -5,15 +5,6 @@ const userModel = require("../../models/user.js");
 const localStrategy = require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/home",
-//     failureRedirect: "/error",
-//   }),
-//   (req, res, next) => {
-
-//   });
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, user, info) => {
         if (err) {

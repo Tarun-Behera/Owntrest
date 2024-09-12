@@ -72,7 +72,6 @@ document.querySelector("#lf").addEventListener("submit", (e) => {
       }
     })
     .catch((error) => {
-      console.error(error)
       document.querySelector("#lf").reset();
       document.querySelector("#errorMessage").textContent = error.message;
       setTimeout(() => {
