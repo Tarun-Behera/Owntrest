@@ -1,13 +1,13 @@
 <%- include ('./layout/head.ejs'); -%> <%- include ('./partials/nav.ejs'); -%>
 
-<div class="messageContainer z-[999] hidden"></div>
+        <div class="messageContainer z-[9999] shadow-xl hidden"></div>
         <div class="all-container w-full py-5 px-12">
             <section class="all-cards">
                 <section class="cards">
                     <% posts.forEach((post)=>{ %>
                         <div class="hover:scale-[1.05] transition-all duration-[.4s] group">
                             <div class="card w-full cursor-pointer relative">
-                                <div class="card-media-container">
+                                <div class="card-media-container" data-post-id="<%= post._id %>">
                                     <% if (post.postImage.mimeType.startsWith('image/')) { %>
                                         <img src="<%= post?.postImage.url %>" alt="Post is of <%= post.title %>"
                                             class="card-media rounded-[20px] pb-2 w-full h-full object-cover" />
@@ -33,7 +33,7 @@
                                                         onclick="toggleLike(this, event)">
                                                         <i class="ri-heart-3-fill"></i>
                                                     </div>
-                                                </div>
+                                </div>
                                 <div class="card-body flex justify-between items-center px-4">
                                     <p class="card-title">
                                         <%= post.title %>
@@ -58,6 +58,8 @@
                                                 </div>
                                 </div>
                             </div>
+
+                            
                         </div>
 
                         <% }) %>
@@ -65,7 +67,8 @@
             </section>
         </div>
 
-        <%- include ('./partials/scroll-bounce.ejs'); -%> <%- include ('./partials/scale-posts.ejs'); -%>
+        <%- include ('./partials/scroll-bounce.ejs'); -%>
+            <%- include ('./partials/scale-posts.ejs'); -%>
                 <script src="/javascripts/scroll-bounce.js" defer></script>
                 <%- include ('./layout/foot.ejs'); -%>
                     <script src="/javascripts/scale.js" defer></script>

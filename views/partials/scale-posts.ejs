@@ -13,8 +13,16 @@
                 </div>
             </div>
             <div class="post-details w-full h-[calc(100%-50px)] flex p-[30px] gap-[20px]">
-                <div class="post-media-container h-full w-[28vw]">
-                    <!-- media can be image or video -->
+                <div class="relative">
+                    <div class="post-media-container h-full w-[28vw]">
+                        <!-- media can be image or video -->
+                    </div>
+                    <div class="icon-container absolute top-2 right-2 flex gap-2">
+                        <div class="sclTgleLike text-3xl cursor-pointer text-[rgba(225,225,225)]" onclick="toggleLike(this,event)" >
+                            <i class="ri-heart-3-fill"></i>
+                        </div>
+                    </div>
+
                 </div>
                 <div
                     class="post-text-container h-full w-[calc(100%-28vw)] ml-[20px] p-4 flex flex-col justify-between gap-8 shadow-2xl">

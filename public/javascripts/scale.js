@@ -87,7 +87,29 @@ var scale = () => {
       document.querySelector(".scale-posts-modal").classList.remove("hidden");
       document.querySelector("body").classList.add("overflow-hidden");
       pass_post_arg(e);
+      const postId = card.querySelector(".card-media-container").getAttribute("data-post-id")
+      syncTgleLike(postId);
     })
   );
 };
 scale();
+
+// # function to sync scale heart Icon with the post-container
+var syncTgleLike = (postId)=>{
+  const postElement = document.querySelector(`.card-media-container[data-post-id="${postId}"]`);
+  if (postElement) {
+    const scaledHeartIcon = document.querySelector('.sclTgleLike');
+    const liked = postElement.querySelector('.likeBtn').getAttribute('data-liked') === 'true';
+
+    scaledHeartIcon.setAttribute('data-post-id', postId);
+    scaledHeartIcon.classList.toggle('text-red-500', liked);
+    scaledHeartIcon.classList.toggle('text-[rgba(225,225,225)]', !liked);
+    scaledHeartIcon.setAttribute('data-liked', liked);
+}
+};
+
+// // # function to click on scale heart icon 
+// var sclTgleLike = (sclHrtIcn,event)=>{
+//   console.log("clicked on "+ event.target.id)
+//   toggleLike(sclHrtIcn,event)
+// }
