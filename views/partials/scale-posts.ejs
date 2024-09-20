@@ -1,8 +1,8 @@
 <div
-    class="scale-posts-modal w-[100%] h-[100svh] z-[999] flex justify-center items-center fixed top-[0] left-[0] hidden">
-    <div class="scale-posts-container">
+    class="scale-posts-modal w-[100%] h-[100svh] z-[999] flex justify-center items-center fixed top-[0] left-[0] hidden sm:p-[130px] md:p-0">
+    <div class="scale-posts-container md:h-[75vh] md:w-[85vw] lg:w-[55vw] scale-[.85] sm:scale-[1]">
         <div
-            class="scale-posts-main h-[75vh] w-[55vw] bg-[#3c3c3c] rounded-xl overflow-auto shadow-lg border-[3px] border-[rgb(54,54,54)]">
+            class="scale-posts-main w-auto h-auto sm:h-full sm:w-full  bg-[#3c3c3c] rounded-xl overflow-auto shadow-lg border-[3px] border-[rgb(54,54,54)]">
             <div class="post-head-container flex items-center justify-between p-4 shadow-lg w-full h-[50px] p-[20px]">
                 <div class="post-heading h-[27px] w-fit">
                     <img class="h-full w-full object-cover" src="/images/logo.png" alt="Owntrest Logo">
@@ -12,35 +12,44 @@
                     <i class="ri-close-large-line cursor-pointer"></i>
                 </div>
             </div>
-            <div class="post-details w-full h-[calc(100%-50px)] flex p-[30px] gap-[20px]">
-                <div class="relative">
-                    <div class="post-media-container h-full w-[28vw]">
+            <div
+                class="post-details w-full h-[calc(100%-50px)] flex flex-col md:flex-row items-center justify-center p-[15px] sm:p-[30px] gap-[25px] overflow-hidden">
+                <div class="relative h-full">
+                    <div class="post-media-container h-full w-full md:w-[40vw] lg:w-[28vw] ">
                         <!-- media can be image or video -->
                     </div>
                     <div class="icon-container absolute top-2 right-2 flex gap-2">
-                        <div class="sclTgleLike text-3xl cursor-pointer text-[rgba(225,225,225)]" onclick="toggleLike(this,event)" >
+                        <div class="sclTgleLike text-3xl cursor-pointer text-[rgba(164,164,164,0.6)]"
+                            onclick="toggleLike(this,event)">
                             <i class="ri-heart-3-fill"></i>
                         </div>
                     </div>
 
                 </div>
-                <div
-                    class="post-text-container h-full w-[calc(100%-28vw)] ml-[20px] p-4 flex flex-col justify-between gap-8 shadow-2xl">
-                    <div class="post-title h-[80px]">
-                        <!-- title -->
-                        Title is not provided
+                <div class="text-container h-auto w-auto md:h-full md:w-[calc(100%-28vw)]">
+                    <div
+                        class="text-container-arrow md:hidden h-[32px] w-[32px] bg-[rgb(92,92,92)] shadow-md rounded-full flex justify-center items-center relative z-[1]">
+                        <i class="ri-arrow-up-s-fill"></i>
                     </div>
-                    <div class="post-description h-[calc(100%-180px)] overflow-x-hidden overflow-auto p-4 rounded-md">
-                        <!-- description -->
-                    </div>
-                    <div class="post-user h-[100px] flex gap-4 items-center">
-                        <div
-                            class="prf-pic-container border-2 border-gray-400 h-[60px] w-[60px] rounded-full overflow-auto">
-                            <img class="prf-pic object-cover h-full w-full rounded-full" src="" alt="" />
-                            <!-- profile-pic -->
+                    <div
+                        class="post-text-container hidden rounded-xl h-auto w-full border-2 border-gray-400 absolute bottom-0 left-0 h-auto m-0 w-auto bg-[#3c3c3c] md:relative md:top-auto md:left-0 md:bg-transparent md:h-full md:w-full md:border-none p-4 md:flex flex-col justify-between gap-8 shadow-2xl">
+                        <div class="post-title h-[80px]">
+                            <!-- title -->
+                            Title is not provided
                         </div>
-                        <div class="prf-name">
-                            <!-- user Fullname -->
+                        <div
+                            class="post-description h-[calc(100%-180px)] overflow-x-hidden overflow-auto p-4 rounded-md">
+                            <!-- description -->
+                        </div>
+                        <div class="post-user h-[100px] flex gap-4 items-center">
+                            <div
+                                class="prf-pic-container border-2 border-gray-400 h-[60px] w-[60px] rounded-full overflow-auto">
+                                <img class="prf-pic object-cover h-full w-full rounded-full" src="" alt="" />
+                                <!-- profile-pic -->
+                            </div>
+                            <div class="prf-name">
+                                <!-- user Fullname -->
+                            </div>
                         </div>
                     </div>
                 </div>

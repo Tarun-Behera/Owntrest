@@ -36,7 +36,7 @@ router.get("/home", isLoggedIn, async function (req, res) {
 router.get("/profile", isLoggedIn, async function (req, res, next) {
   try {
     const user = await userModel.findOne({ username: req.session.passport.user }).populate("posts").populate("likedPosts");
-    return res.render("profile", { user, home: false, profile: false, logout: true });
+    return res.render("profile", { user, home: true, profile: false, logout: true });
   } catch (error) {
     // console.error("Error:", error);
     return res.status(500).json({ error: error.message });

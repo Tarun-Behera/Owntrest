@@ -123,7 +123,8 @@ body::-webkit-scrollbar {
 }
 
 .cards {
-  columns: 6 200px;
+  columns: 2;
+  column-width: 100px;
   column-gap: 1.5rem;
 }
 
