@@ -1,3 +1,12 @@
+// # smooth animation
+const lenis = new Lenis();
+function raf(time) {
+lenis.raf(time);
+requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 //# duration of the video
 document.querySelectorAll(".card-media-container").forEach(container => {
   const video = container.querySelector("video");

@@ -1,34 +1,38 @@
-// var timeline = gsap.timeline({
-//     repeat:-1,
-//     repeatDelay:0.1,
-//     duration:0.5
-// })
+const lenis = new Lenis({
+     duration: 4,
+});
 
-// timeline
-// .to(".images", {
-//     ease: 'power3.out',
-//     width: "100%",
-//     duration: 1.2,
-//     stagger: 2,
-// },'sliding-animation')
-// .to(".bluring-effect", {
-//   ease: 'power3.out',
-//   width: "100%",
-//   duration: 1.2,
-//   stagger: 2,
-// },'sliding-animation')
-// .to(".texts", {
-//   ease: 'power3.out',
-//   top: 0,
-//   delay:0.5,
-//   duration: 0.8,
-//   stagger: 2,
-// },'sliding-animation')
-// .to(".texts", {
-//   ease:'power3.out' ,
-//   top: '-100%',
-//   delay:2.2,
-//   duration: 0.5,
-//   stagger: 2,
-//   opacity:"0.5",
-// },'')
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+gsap.registerPlugin(ScrollTrigger);
+document.querySelectorAll(".item").forEach((elem) => {
+  let image = elem.querySelector("img");
+  let t1 = gsap.timeline();
+  let xTransform = gsap.utils.random(-100, 100);
+  t1.set(image, {
+    transformOrigin: `${xTransform < 0 ? 0 : "100%"}`,
+  },"start").to(image, {
+    scale:0,
+    duration:6,
+    ease: "none",
+    scrollTrigger: {
+      trigger: image,
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+  },"start")
+  .to(elem,{
+    xPercent: xTransform,
+    scrollTrigger: {
+        trigger: image,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+  })
+});
