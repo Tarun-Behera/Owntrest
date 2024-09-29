@@ -1,17 +1,19 @@
 <%- include ('./layout/head.ejs'); -%>
+<%- include ('./partials/loader.ejs'); -%>
+      <div class="main-content w-full hidden">
+        <header class="w-full h-[80px] sticky top-0 left-0 bg-[#373737] shadow-lg">
+          <%- include ('./partials/header.ejs'); -%>
+            <div class="nav-modal w-[100%] h-[100svh] z-[999] absolute top-0 hidden ">
+              <%- include ('./partials/login-card.ejs'); -%>
+                <%- include ('./partials/sign-up-card.ejs'); -%>
+            </div>
+        </header>
+        <!-- animation photo -->
+        <%- include ('./partials/animation.ejs'); -%>
+      </div>
+      
+    <%- include ('./layout/foot.ejs'); -%>
 
-<header class="w-full h-[80px] fixed top-0 left-0 bg-[#373737] shadow-lg">
-  <%- include ('./partials/header.ejs'); -%>
-  <div class="nav-modal w-[100%] h-[100svh] z-[999] absolute top-0 hidden ">
-    <%- include ('./partials/login-card.ejs'); -%>
-    <%- include ('./partials/sign-up-card.ejs'); -%>
-  </div>
-</div>
-</header>
-
-<!-- animation photo -->
-<%- include ('./partials/animation.ejs'); -%>
-<%- include ('./layout/foot.ejs'); -%>
-
-<script src="../javascripts/header.js" defer></script>
-<script src="/javascripts/auth.js" defer></script>
+    <script src="./javascripts/animation.js" defer></script>
+      <script src="../javascripts/header.js" defer></script>
+      <script src="/javascripts/auth.js" defer></script>
