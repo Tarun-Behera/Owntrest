@@ -40,7 +40,7 @@ router.post("/sign-up", async (req, res, next) => {
       }
       passport.authenticate("local")(req, res, () => {
         // console.log("User authenticated successfully");
-        return res.status(200).json({ success: true, message: "Account Created Successfully !!!" });
+        return res.status(200).json({ success: true, message: "Account Created Successfully." });
       });
     });
   } catch (error) {
