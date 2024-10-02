@@ -139,7 +139,7 @@ body::-webkit-scrollbar {
 /* # CSS for Home page */
 .all-container {
   position: relative;
-  top: 100px;
+  top: 10px;
 }
 
 .all-cards {
@@ -183,7 +183,6 @@ body::-webkit-scrollbar {
 .profile-container {
   height: calc(100svh - 80px);
   position: relative;
-  top: 80px;
 }
 
 /* # scroll down animation */

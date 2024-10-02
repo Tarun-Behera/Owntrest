@@ -1,7 +1,7 @@
 <%- include('./layout/head.ejs'); -%>
   <%-  include('./partials/nav.ejs'); -%>
 
-    <div class="profile-container h-[calc(100svh - 80px)] w-full p-10">
+    <div class="profile-container h-[calc(100% - 80px)] w-full p-10">
       <form enctype="multipart/form-data" id="prfImg-form" class="hidden">
         <input type="file" name="prf-img" id="prf-img">
       </form>
@@ -48,7 +48,7 @@
         </div>
         <%- include('./partials/add-posts.ejs'); -%>
       </div>
-      <div class="flex flex-wrap gap-10 w-full p-8">
+      <div class="flex flex-wrap md:gap-10 w-full p-4">
         <div class="post-cards flex flex-wrap gap-10 mt-10 p-2 ">
           <div class="p-card hover:cursor-pointer">
             <div class=" bg-[#3c3c3c] w-52 h-40 rounded-xl overflow-hidden">

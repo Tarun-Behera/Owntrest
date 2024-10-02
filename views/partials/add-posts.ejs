@@ -1,6 +1,6 @@
 <div
-    class="post-container-modal w-[100%] h-[100svh] z-[999] absolute top-[-80px] left-[0] hidden flex items-center justify-center">
-    <div class="post-container h-[80%] bg-[#3c3c3c] shadow-lg border-[3px] border-[rgb(90,90,90)] rounded-md">
+    class="post-container-modal w-[100%] h-[100vh] z-[999] absolute top-[-80px] left-[0] hidden flex items-center justify-center overflow-hidden">
+    <div class="post-container h-[80%] bg-[#3c3c3c] shadow-lg border-[3px] border-[rgb(90,90,90)] rounded-md scale-[0.8] lg:scale-[1]">
         <div class="post-heading relative">
             <h1 class="text-[25px] text-center py-2 opacity-80">Create a new Post</h1>
             <div class="h-full w-fit p-4 absolute top-0 right-0 flex justify-center items-center">
@@ -9,9 +9,9 @@
         </div>
         <hr class="opacity-10" />
         <section class="w-full h-[80%] flex justify-center items-center overflow-auto px-10">
-            <div class="flex justify-center items-center">
-                <form id="postImage-form" enctype="multipart/form-data">
-                    <div class="flex flex-wrap justify-center items-center gap-10">
+            <div class="flex justify-center items-center w-full h-full">
+                <form id="postImage-form" enctype="multipart/form-data" class="w-full h-full">
+                    <div class="flex flex-wrap justify-center items-center gap-10 w-full h-full p-4">
                         <div class="flex justify-center items-center">
                             <div class="upld-post">
                                 <div class="relative">
@@ -34,7 +34,7 @@
                                     onchange="previewFile(this)" type="file" />
                             </div>
                         </div>
-                        <div class="post-details w-[400px]">
+                        <div class="post-details w-auto sm:w-[400px]">
                             <input class="w-full mt-0 text-black rounded-md py-1 px-1" type="text" name="title"
                                 placeholder="title" />
                             <textarea class="block mt-4 text-black rounded-md py-1 px-1 w-full h-[160px]"
@@ -46,6 +46,6 @@
                 </form>
             </div>
         </section>
-        <div class="result text-center"></div>
+        <div class="result w-full h-auto text-center flex justify-center items-center mt-[10px]"></div>
     </div>
 </div>

@@ -33,8 +33,10 @@ document.querySelectorAll(".p-card").forEach((p)=>{
   p.addEventListener("click", (event) => {
     if(event.currentTarget === document.querySelector(".liked-post-container")){
       document.querySelector(".show-like-card-modal").classList.remove("hidden");
+      document.querySelector("body").classList.add("fixed");
     }
     document.querySelector(".show-card-modal").classList.remove("hidden");
+    document.querySelector("body").classList.add("fixed");
   });
 })
 ///
@@ -42,6 +44,7 @@ document.querySelectorAll(".p-card").forEach((p)=>{
 document.querySelector(".createPost").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector(".post-container-modal").classList.remove("hidden");
+  document.querySelector("body").classList.add("fixed");
 });
 window.onclick = (e) => {
   if (
@@ -55,5 +58,6 @@ window.onclick = (e) => {
     document.querySelector(".show-card-modal").classList.add("hidden");
     document.querySelector(".show-like-card-modal").classList.add("hidden");
     document.querySelector(".post-container-modal").classList.add("hidden");
+    document.querySelector("body").classList.remove("fixed");
   }
 };

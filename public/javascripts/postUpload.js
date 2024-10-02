@@ -64,12 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => {
       // Check if the response is not successful
       if (!response.ok) {
-        // Return the response error message to the next `.then()` block
         return response.json().then((err) => {
           throw new Error(err.error); // Extract and throw the error message from API
         });
       }
-      return response.json(); // Proceed with successful response
+      return response.json();
     })
       .then((data) => {
         let post = data.posts;
@@ -105,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         // console.error("Error:", error.message);
-        document.querySelector('.post-result-msg').innerHTML = `<div class="errorMessage border-2 border-[#522529] bg-[#4a1215] text-[#f8c4c7] text-[20px] py-[5px] px-4 rounded-md relative z-[999] transition-all duration-[0.9] ease-in-out">${error.message}</div>`;
+        document.querySelector('.result').innerHTML = `<div class="errorMessage border-2 border-[#522529] bg-[#4a1215] text-[#f8c4c7] text-[20px] py-[5px] px-4 rounded-md relative z-[999] transition-all duration-[0.9] ease-in-out">${error.message}</div>`;
         // error for not selecting image
         setTimeout(() => {
           document.querySelector('.errorMessage').classList.add('opacity-0');
