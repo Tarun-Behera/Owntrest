@@ -1,87 +1,91 @@
 <%- include('./layout/head.ejs'); -%>
-  <%-  include('./partials/nav.ejs'); -%>
+  <div class="profile-main w-full h-auto sm:h-full">
+    <%- include('./partials/nav.ejs'); -%>
 
-    <div class="profile-container h-[calc(100% - 80px)] w-full p-10">
-      <form enctype="multipart/form-data" id="prfImg-form" class="hidden">
-        <input type="file" name="prf-img" id="prf-img">
-      </form>
-      <div class="profile-card flex items-start justify-center ">
-        <div class="prfImg-container bg-transparent font-semibold text-center rounded-3xl max-w-xs flex flex-col items-center">
-          <div class="relative w-[128px]">
-            <div class="group">
-              <span id="prfImg-icon"
-              class="absolute right-0 bottom-[12px] h-10 w-10 bg-[#3c3c3c] rounded-full flex justify-center items-center cursor-pointer h-9 w-9 border-2 border-gray-400 hover:text-sky-200 hover:border-sky-300 z-[1]">
-              <i class="ri-pencil-fill "></i>
-            </span>
-            <span class="tooltip invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[9rem] bg-gray-700 text-white text-center rounded-md py-2 z-10 transition-opacity duration-300 shadow-lg absolute bottom-[10px] left-[105%]">
-              Change Avatar
-            </span>
-            </div>
-            <div class="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto overflow-hidden">
-              <% if(user && user.profileImg) { %>
-                <!-- profile img that is shown on changing -->
-                <img class="prfImg w-32 h-32 object-cover" src="<%= user.profileImg %>"
-                  alt="@<%= user.username%>">
-                <% } else { %>
-                  <!-- profile image that is shown by default -->
-                  <img class="prfImg w-32 h-32 object-cover scale-[1.2] object-[0,1.5px]" src="/images/user.webp"
-                    alt="@username">
-                  <% } %>
-            </div>
-          </div>
-          <div class="user-details">
-            <h1 class="text-lg text-slate-200">
-              <%= user.fullname%>
-            </h1>
-            <h3 class="text-gray-300 "> @<%= user.username%>
-            </h3>
-          </div>
-          <div class="createPost flex justify-center items-center group relative">
-            <button
-              class="bg-red-500 mt-4 h-[50px] w-[50px] rounded-full text-gray-100 font-semibold  hover:bg-[#D22E2E]">
-              <i class="ri-add-line"></i>
-            </button>
-            <span class="tooltip invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[9rem] bg-gray-700 text-white text-center rounded-md py-2 absolute z-10 transition-opacity duration-300 -bottom-12 left-1/2 transform -translate-x-1/2  shadow-lg">
-              Create New Post
-            </span>
-          </div>
-        </div>
-        <%- include('./partials/add-posts.ejs'); -%>
-      </div>
-      <div class="flex flex-wrap md:gap-10 w-full p-4">
-        <div class="post-cards flex flex-wrap gap-10 mt-10 p-2 ">
-          <div class="p-card hover:cursor-pointer">
-            <div class=" bg-[#3c3c3c] w-52 h-40 rounded-xl overflow-hidden">
-              <% if(user?.posts[user.posts.length - 1]?.postImage?.mimeType?.startsWith('video/')) { %>
-                <video class="p-img w-full h-full object-cover"
-                  src="<%= user.posts[user.posts.length - 1].postImage.url %>"></video>
-                <% } else if(user?.posts[user.posts.length - 1]?.postImage?.mimeType?.startsWith('image/')) { %>
-                  <img class="p-img w-full h-full object-cover"
-                    src="<%= user.posts[user.posts.length - 1].postImage.url %>" alt="Uploads">
+      <div class="profile-container h-full sm:h-[calc(100%-80px)] w-full p-[12px] xl:p-10 overflow-hidden ">
+        <form enctype="multipart/form-data" id="prfImg-form" class="hidden">
+          <input type="file" name="prf-img" id="prf-img">
+        </form>
+        <div class="profile-card flex items-start justify-center ">
+          <div
+            class="prfImg-container bg-transparent font-semibold text-center rounded-3xl max-w-xs flex flex-col items-center">
+            <div class="relative w-[128px]">
+              <div class="group">
+                <span id="prfImg-icon"
+                  class="absolute right-0 bottom-[12px] h-10 w-10 bg-[#3c3c3c] rounded-full flex justify-center items-center cursor-pointer h-9 w-9 border-2 border-gray-400 hover:text-sky-200 hover:border-sky-300 z-[1]">
+                  <i class="ri-pencil-fill "></i>
+                </span>
+                <span
+                  class="tooltip invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[9rem] bg-gray-700 text-white text-center rounded-md py-2 z-10 transition-opacity duration-300 shadow-lg absolute bottom-[10px] left-[105%]">
+                  Change Avatar
+                </span>
+              </div>
+              <div class="mb-3 w-32 h-32 rounded-full shadow-lg mx-auto overflow-hidden">
+                <% if(user && user.profileImg) { %>
+                  <!-- profile img that is shown on changing -->
+                  <img class="prfImg w-32 h-32 object-cover" src="<%= user.profileImg %>" alt="@<%= user.username%>">
                   <% } else { %>
-                    <div class="noUploads flex justify-center items-center h-full w-full select-none">
-                      <div
-                        class="nUpTexts w-fit h-full flex flex-col justify-center text-4xl font-semibold leading-snug ">
-                        <span>No</span>
-                        <span>Uploads!!</span>
-                      </div>
-                    </div>
+                    <!-- profile image that is shown by default -->
+                    <img class="prfImg w-32 h-32 object-cover scale-[1.2] object-[0,1.5px]" src="/images/user.webp"
+                      alt="@username">
                     <% } %>
+              </div>
             </div>
-            <h3 class="text-xl text-slate-200 mt-3"> My Uploads </h3>
-            <h5 class="text-sm text-gray-300 " id="post-length">
-              <%= user.posts.length %> pins
-            </h5>
-            <%- include('./partials/show-cards.ejs'); -%>
+            <div class="user-details">
+              <h1 class="text-lg text-slate-200">
+                <%= user.fullname%>
+              </h1>
+              <h3 class="text-gray-300 "> @<%= user.username%>
+              </h3>
+            </div>
+            <div class="createPost flex justify-center items-center group relative">
+              <button
+                class="bg-red-500 mt-4 h-[50px] w-[50px] rounded-full text-gray-100 font-semibold  hover:bg-[#D22E2E]">
+                <i class="ri-add-line"></i>
+              </button>
+              <span
+                class="tooltip invisible opacity-0 group-hover:visible group-hover:opacity-100 w-[9rem] bg-gray-700 text-white text-center rounded-md py-2 absolute z-10 transition-opacity duration-300 -bottom-12 left-1/2 transform -translate-x-1/2  shadow-lg">
+                Create New Post
+              </span>
+            </div>
           </div>
+          <%- include('./partials/add-posts.ejs'); -%>
         </div>
-        
-        <%- include('./partials/liked-posts.ejs'); -%>
-      </div>
-      
-      <div class="post-result-msg flex justify-center w-full h-auto">
-      </div>
-      <%- include('./layout/foot.ejs'); -%>
+        <div class="flex flex-wrap justify-center md:justify-normal md:gap-10 w-full p-4">
+          <div class="post-cards flex flex-wrap gap-10 mt-10 p-2 ">
+            <div class="p-card hover:cursor-pointer">
+              <div class=" bg-[#3c3c3c] w-52 h-40 rounded-xl overflow-hidden">
+                <% if(user?.posts[user.posts.length - 1]?.postImage?.mimeType?.startsWith('video/')) { %>
+                  <video class="p-img w-full h-full object-cover"
+                    src="<%= user.posts[user.posts.length - 1].postImage.url %>"></video>
+                  <% } else if(user?.posts[user.posts.length - 1]?.postImage?.mimeType?.startsWith('image/')) { %>
+                    <img class="p-img w-full h-full object-cover"
+                      src="<%= user.posts[user.posts.length - 1].postImage.url %>" alt="Uploads">
+                    <% } else { %>
+                      <div class="noUploads flex justify-center items-center h-full w-full select-none">
+                        <div
+                          class="nUpTexts w-fit h-full flex flex-col justify-center text-4xl font-semibold leading-snug ">
+                          <span>No</span>
+                          <span>Uploads!!</span>
+                        </div>
+                      </div>
+                      <% } %>
+              </div>
+              <h3 class="text-xl text-slate-200 mt-3"> My Uploads </h3>
+              <h5 class="text-sm text-gray-300 " id="post-length">
+                <%= user.posts.length %> pins
+              </h5>
+              <%- include('./partials/show-cards.ejs'); -%>
+            </div>
+          </div>
 
-        <script src="../javascripts/profile.js" defer></script>
-        <script src="../javascripts/postUpload.js" defer></script>
+          <%- include('./partials/liked-posts.ejs'); -%>
+        </div>
+
+        <div class="post-result-msg flex justify-center w-full h-auto"></div>
+      </div>
+  </div>
+  <%- include('./layout/foot.ejs'); -%>
+
+    <script src="../javascripts/profile.js" defer></script>
+    <script src="../javascripts/postUpload.js" defer></script>

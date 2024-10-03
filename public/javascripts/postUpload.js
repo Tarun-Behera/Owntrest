@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the success state is set in session storage
   if (sessionStorage.getItem("uploadSuccess") === "true") {
     // Display the success message
-    document.querySelector('.post-result-msg').innerHTML = `<div class="successMessage border-2 border-[#0d3626] bg-[#0b3322] text-[#9ae5bf] text-[20px] py-[5px] px-4 rounded-md relative z-[999] transition-all duration-[0.9] ease-in-out" >Successfully uploaded !</div>`;
+    document.querySelector('.post-result-msg').innerHTML = `<div class="successMessage border-2 border-[#0d3626] bg-[#0b3322] text-[#9ae5bf] text-[20px] py-[5px] px-4 rounded-md relative top-[-330px] sm:top-[-20px] lg:top-[0] z-[999] transition-all duration-[0.9] ease-in-out" >Successfully uploaded !</div>`;
 
     setTimeout(() => {
       document.querySelector('.successMessage').classList.add('opacity-0');
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((error) => {
         // console.error("Error:", error.message);
-        document.querySelector('.result').innerHTML = `<div class="errorMessage border-2 border-[#522529] bg-[#4a1215] text-[#f8c4c7] text-[20px] py-[5px] px-4 rounded-md relative z-[999] transition-all duration-[0.9] ease-in-out">${error.message}</div>`;
+        document.querySelector('.result').innerHTML = `<div class="errorMessage border-2 border-[#522529] bg-[#4a1215] text-[#f8c4c7] text-[20px] py-[5px] px-4 rounded-md relative top-[-330px] sm:top-[-20px] lg:top-[0] z-[999] transition-all duration-[0.9] ease-in-out">${error.message}</div>`;
         // error for not selecting image
         setTimeout(() => {
           document.querySelector('.errorMessage').classList.add('opacity-0');

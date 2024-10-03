@@ -7,7 +7,7 @@
 
 html,
 body {
-  height: 100svh;
+  height: 100%;
   width: 100%;
 }
 
@@ -98,7 +98,8 @@ body::-webkit-scrollbar {
 .nav-modal,
 .show-card-modal,
 .post-container-modal,
-.scale-posts-modal {
+.scale-posts-modal,
+.show-like-card-modal {
   background-color: rgba(26, 25, 25, 0.6);
 }
 
