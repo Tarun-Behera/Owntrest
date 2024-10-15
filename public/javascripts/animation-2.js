@@ -22,7 +22,7 @@ document.querySelectorAll(".item").forEach((elem) => {
     gsap
       .fromTo(
         image,
-        { scale: 0.7 }, // Starting scale
+        { scale: 0.6 }, // Starting scale
         {
           scale: 1, // End scale
           duration: 6,
@@ -32,7 +32,7 @@ document.querySelectorAll(".item").forEach((elem) => {
             start: "top bottom", // Animation starts when image comes into view
             end: "top top", // Animation ends when the image reaches the top
             scrub: true, // Smoothly scrub the animation as you scroll
-            onLeaveBack: () => gsap.to(image, { scale: 0.7 }), // Scale up when scrolling back up
+            onLeaveBack: () => gsap.to(image, { scale: 0.6 }), // Scale up when scrolling back up
             onEnterBack: () => gsap.to(image, {}), // Scale down when reaching the top again
           },
         },
