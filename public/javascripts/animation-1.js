@@ -28,8 +28,8 @@ document.querySelectorAll(".item").forEach((elem) => {
         ease: "none",
         scrollTrigger: {
           trigger: image,
-          start: "top top",
-          end: "bottom top",
+          start: "top 12%",
+          end: "bottom 12%",
           scrub: true,
         },
       },
