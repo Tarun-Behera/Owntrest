@@ -1,3 +1,12 @@
+// Ensure page scrolls to the top on reload
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual'; // Disable automatic scroll restoration
+}
+
+window.scrollTo(0, 0); // Scroll to the top on page reload
+
+
+
 const lenis = new Lenis({
     duration: 4,
   });
@@ -29,8 +38,8 @@ document.querySelectorAll(".item").forEach((elem) => {
           ease: "none",
           scrollTrigger: {
             trigger: image,
-            start: "top bottom", // Animation starts when image comes into view
-            end: "top top", // Animation ends when the image reaches the top
+            start: "top 70%", // Animation starts when image comes into view
+            end: "top 30%", // Animation ends when the image reaches the top
             scrub: true, // Smoothly scrub the animation as you scroll
             onLeaveBack: () => gsap.to(image, { scale: 0.6 }), // Scale up when scrolling back up
             onEnterBack: () => gsap.to(image, {}), // Scale down when reaching the top again
@@ -38,6 +47,20 @@ document.querySelectorAll(".item").forEach((elem) => {
         },
         "start"
       )
+        t1.to(
+          elem,
+          {
+            scale: 0.5, // End scale
+            duration: 4,
+            ease: "none",
+            scrollTrigger: {
+              trigger: image,
+              start: "top 8%", // Animation starts when image comes into view
+              end: "top bottom", // Animation ends when the image reaches the top
+              scrub: 4, // Smoothly scrub the animation as you scroll
+            },
+          },
+        )
       t1.to(
         elem,
         {
