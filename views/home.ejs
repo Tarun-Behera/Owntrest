@@ -1,76 +1,69 @@
 <%- include ('./layout/head.ejs'); -%> <%- include ('./partials/nav.ejs'); -%>
 
-        <div class="messageContainer z-[9999] shadow-xl hidden"></div>
-        <div class="all-container w-full py-5 px-[10px] sm:px-12">
-            <section class="all-cards">
-                <section class="cards sm:columns-[200px]">
-                    <% posts.forEach((post)=>{ %>
-                        <div class="hover:scale-[1.05] transition-all duration-[.4s] group">
-                            <div class="card w-full cursor-pointer relative">
-                                <div class="card-media-container" data-post-id="<%= post._id %>">
-                                    <% if (post.postImage.mimeType.startsWith('image/')) { %>
-                                        <img src="<%= post?.postImage.url %>" alt="Post is of <%= post.title %>"
-                                            class="card-media rounded-[20px] pb-2 w-full h-full object-cover" />
-                                        <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
-                                            <video class="card-media rounded-[20px] pb-2 w-full object-cover"
-                                                src="<%= post.postImage.url %>"></video>
-                                            <div
-                                                class="duration absolute top-[10px] left-[15px] bg-[#3c3c3c] rounded-xl px-[10px]">
-                                            </div>
-                                            <% } else { %>
-                                                <p>Unsupported file type.</p>
-                                                <% } %>
+<div class="messageContainer z-[9999] shadow-xl hidden"></div>
+<div class="all-container w-full py-5 px-[10px] sm:px-12">
+  <section class="all-cards">
+    <section class="cards sm:columns-[200px]">
+      <% posts.forEach((post)=>{ %>
+      <div class="hover:scale-[1.05] transition-all duration-[.4s] group">
+        <div class="card w-full cursor-pointer relative">
+          <div class="card-media-container" data-post-id="<%= post._id %>">
+            <% if (post.postImage.mimeType.startsWith('image/')) { %>
+            <img
+              src="<%= post?.postImage.url %>"
+              alt="Post is of <%= post.title %>"
+              class="card-media rounded-[20px] pb-2 w-full h-full object-cover" />
+            <% } else if (post.postImage.mimeType.startsWith('video/')) { %>
+            <video
+              class="card-media rounded-[20px] pb-2 w-full object-cover"
+              src="<%= post.postImage.url %>"></video>
+            <div
+              class="duration absolute top-[10px] left-[15px] bg-[#3c3c3c] rounded-xl px-[10px]"></div>
+            <% } else { %>
+            <p>Unsupported file type.</p>
+            <% } %>
 
-                                                    <!-- Heart Icon for Like/Unlike -->
-                                                    <div class="likeBtn absolute top-2 right-2 text-3xl cursor-pointer transition-all duration-300 delay-200 hover:delay-150
-                                                       <% if (user.likedPosts.includes(post._id)) { %>
-                                                         text-red-500 opacity-100 
-                                                         <% } else { %>
-                                                             text-[rgba(164,164,164,0.6)] opacity-0 group-hover:opacity-100
-                                                             hover:text-red-500
-                                                             <% } %>" data-post-id="<%= post._id %>"
-                                                        data-liked="<%= user.likedPosts.includes(post._id) %>"
-                                                        onclick="toggleLike(this, event)">
-                                                        <i class="ri-heart-3-fill"></i>
-                                                    </div>
-                                </div>
-                                <div class="card-body flex justify-between items-center px-4">
-                                    <p class="card-title">
-                                        <%= post.title %>
-                                    </p>
-                                    <% if(user && user.profileImg) { %>
-                                        <!-- profile img that is shown on changing -->
-                                        <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
-                                            src="<%= post.user.profileImg%>" alt="Post is of <%= post.title%>" />
-                                        <% } else { %>
-                                            <!-- profile image that is shown by default -->
-                                            <img class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
-                                                src="/images/user.webp" alt="@username" />
-                                            <% } %>
+            <!-- Heart Icon for Like/Unlike -->
+            <div
+              class="likeBtn absolute top-2 right-2 text-3xl cursor-pointer transition-all duration-300 delay-200 hover:delay-150 <% if (user.likedPosts.includes(post._id)) { %> text-red-500 opacity-100 <% } else { %> text-[rgba(164,164,164,0.7)] opacity-0 group-hover:opacity-100 hover:text-red-500 <% } %>"
+              data-post-id="<%= post._id %>"
+              data-liked="<%= user.likedPosts.includes(post._id) %>"
+              onclick="toggleLike(this, event)">
+              <i class="ri-heart-3-fill"></i>
+            </div>
+          </div>
+          <div class="card-body flex justify-between items-center px-4">
+            <p class="card-title"><%= post.title %></p>
+            <% if(user && user.profileImg) { %>
+            <!-- profile img that is shown on changing -->
+            <img
+              class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
+              src="<%= post.user.profileImg%>"
+              alt="Post is of <%= post.title%>" />
+            <% } else { %>
+            <!-- profile image that is shown by default -->
+            <img
+              class="user-prfImg h-[35px] w-[35px] rounded-full hidden"
+              src="/images/user.webp"
+              alt="@username" />
+            <% } %>
 
-                                                <div class="card-other-details hidden">
-                                                    <p class="card-description hidden">
-                                                        <%= post.description %>
-                                                    </p>
-                                                    <p class="user-prfName">
-                                                        <%= post.user.fullname%>
-                                                    </p>
-                                                </div>
-                                </div>
-                            </div>
-
-                            
-                        </div>
-
-                        <% }) %>
-                </section>
-            </section>
+            <div class="card-other-details hidden">
+              <p class="card-description hidden"><%= post.description %></p>
+              <p class="user-prfName"><%= post.user.fullname%></p>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <%- include ('./partials/scroll-bounce.ejs'); -%>
-            <%- include ('./partials/scale-posts.ejs'); -%>
-                <script src="/javascripts/scroll-bounce.js" defer></script>
-                <%- include ('./layout/foot.ejs'); -%>
-                    <script src="/javascripts/scale.js" defer></script>
-                    <script src="/javascripts/toggleLike.js" defer></script>
-                    <script src="/javascripts/home.js" defer></script>
+      <% }) %>
+    </section>
+  </section>
+</div>
+
+<%- include ('./partials/scroll-bounce.ejs'); -%> <%- include ('./partials/scale-posts.ejs'); -%>
+<script src="/javascripts/scroll-bounce.js" defer></script>
+<%- include ('./layout/foot.ejs'); -%>
+<script src="/javascripts/scale.js" defer></script>
+<script src="/javascripts/toggleLike.js" defer></script>
+<script src="/javascripts/home.js" defer></script>
