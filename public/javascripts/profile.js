@@ -60,5 +60,6 @@ window.onclick = (e) => {
     document.querySelector(".show-like-card-modal").classList.add("hidden");
     document.querySelector(".post-container-modal").classList.add("hidden");
     document.querySelector(".profile-main").classList.remove("fixed");
+    document.querySelector("body").classList.remove("fixed");
   }
 };
